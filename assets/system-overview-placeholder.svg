@@ -1,0 +1,74 @@
+<svg width="1400" height="650" viewBox="0 0 1400 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F7FAF7"/>
+      <stop offset="1" stop-color="#E9F2EC"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#123B2C" flood-opacity=".10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10V0Z" fill="#319A68"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="650" fill="url(#panel)"/>
+  <g opacity=".42" stroke="#C8D8CE">
+    <path d="M0 80H1400M0 160H1400M0 240H1400M0 320H1400M0 400H1400M0 480H1400M0 560H1400"/>
+    <path d="M80 0V650M160 0V650M240 0V650M320 0V650M400 0V650M480 0V650M560 0V650M640 0V650M720 0V650M800 0V650M880 0V650M960 0V650M1040 0V650M1120 0V650M1200 0V650M1280 0V650M1360 0V650"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="70" y="68" fill="#176747" font-size="18" font-weight="700" letter-spacing="4">TACNAV SYSTEM OVERVIEW</text>
+
+    <g filter="url(#shadow)">
+      <rect x="70" y="155" width="250" height="210" rx="24" fill="white" stroke="#D6E3DA" stroke-width="2"/>
+      <circle cx="195" cy="225" r="38" fill="#FFF0EC" stroke="#FF7559" stroke-width="3"/>
+      <circle cx="195" cy="225" r="11" fill="#FF7559"/>
+      <path d="M151 225H112M239 225H278M195 181V142M195 269V308" stroke="#FF7559" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 7"/>
+      <text x="195" y="324" text-anchor="middle" fill="#202724" font-size="23" font-weight="700">Tactile action</text>
+      <text x="195" y="349" text-anchor="middle" fill="#6B7771" font-size="15">Touch and swept-free sensing</text>
+    </g>
+
+    <path d="M332 260H410" stroke="#319A68" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="425" y="155" width="250" height="210" rx="24" fill="white" stroke="#D6E3DA" stroke-width="2"/>
+      <path d="M493 252C493 210 525 184 564 184C601 184 628 209 628 245C628 285 597 301 554 301C517 301 493 282 493 252Z" fill="#E2F5EC" stroke="#319A68" stroke-width="3"/>
+      <path d="M513 251L537 231L558 260L583 215L610 247" stroke="#176747" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="550" y="324" text-anchor="middle" fill="#202724" font-size="23" font-weight="700">Contact processing</text>
+      <text x="550" y="349" text-anchor="middle" fill="#6B7771" font-size="15">Geometry, force, free space</text>
+    </g>
+
+    <path d="M687 260H765" stroke="#319A68" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="780" y="155" width="250" height="210" rx="24" fill="white" stroke="#D6E3DA" stroke-width="2"/>
+      <circle cx="865" cy="235" r="31" fill="#A9E5CD" fill-opacity=".72"/>
+      <circle cx="922" cy="216" r="23" fill="#319A68" fill-opacity=".42"/>
+      <circle cx="951" cy="266" r="38" fill="#FF7559" fill-opacity=".30"/>
+      <circle cx="892" cy="273" r="18" fill="#176747" fill-opacity=".72"/>
+      <text x="905" y="324" text-anchor="middle" fill="#202724" font-size="23" font-weight="700">Belief update</text>
+      <text x="905" y="349" text-anchor="middle" fill="#6B7771" font-size="15">Pose and world hypotheses</text>
+    </g>
+
+    <path d="M1042 260H1120" stroke="#319A68" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="1135" y="155" width="195" height="210" rx="24" fill="#0A1915" stroke="#204438" stroke-width="2"/>
+      <path d="M1182 276C1208 226 1230 291 1267 219C1279 195 1291 184 1306 181" stroke="#8EE9C5" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 9"/>
+      <path d="M1291 179L1308 180L1301 196" stroke="#8EE9C5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1233" y="324" text-anchor="middle" fill="white" font-size="23" font-weight="700">Planner</text>
+      <text x="1233" y="349" text-anchor="middle" fill="#A9C0B7" font-size="15">Next touch or motion</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="425" y="450" width="605" height="110" rx="22" fill="#DAEEE4" stroke="#A4CAB8" stroke-width="2"/>
+      <text x="728" y="499" text-anchor="middle" fill="#176747" font-size="22" font-weight="700">Contact-aware whole-body controller</text>
+      <text x="728" y="530" text-anchor="middle" fill="#4F675C" font-size="15">Locomotion · balance · end-effector pose · regulated normal force</text>
+    </g>
+
+    <path d="M1233 378V414C1233 435 1216 450 1195 450H1048" stroke="#319A68" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M425 506H366C340 506 320 485 320 459V379" stroke="#319A68" stroke-width="4" marker-end="url(#arrow)"/>
+  </g>
+</svg>

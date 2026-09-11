@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Remove this line after anonymous review if the page should be indexed. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="TapNav is a humanoid navigation framework built around tactile active perception."
+    />
+    <meta name="theme-color" content="#fbfcfa" />
+    <meta property="og:title" content="TapNav | Humanoid Tactile Active Perception" />
+    <meta
+      property="og:description"
+      content="Humanoid navigation through tactile active perception."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/figures/tapnav-teaser.webp" />
+
+    <title>TapNav | Humanoid Navigation through Tactile Active Perception</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <main id="main-content">
+      <!-- Paper identity: mirrors the title/authors/venue/resources hierarchy of HOVER. -->
+      <header class="paper-header page-shell">
+        <p class="review-label"><span></span> Anonymous project page</p>
+        <h1>
+          <strong>TapNav:</strong> Humanoid Navigation through Tactile Active Perception
+        </h1>
+
+        <div class="authors" aria-label="Paper authors">
+          <!-- Replace this line with linked author names after the review period. -->
+          <span>Anonymous Authors</span>
+        </div>
+        <p class="affiliations">Anonymous Institutions</p>
+        <p class="venue">Under Review · 2027</p>
+
+        <nav class="paper-links" aria-label="Paper resources">
+          <!-- Point this link to the final compiled manuscript when it is ready. -->
+          <span class="pill is-disabled" aria-disabled="true" title="The current compiled PDF is incomplete">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h7l5 5v15H7V2Zm7 1.8V8h4.2M10 13h6M10 17h6" /></svg>
+            PDF
+          </span>
+          <span class="pill is-disabled" aria-disabled="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z" /></svg>
+            Video
+          </span>
+          <span class="pill is-disabled" aria-disabled="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" /></svg>
+            Code
+          </span>
+        </nav>
+      </header>
+
+      <!-- Hero video: replace the figure with the commented video element when ready. -->
+      <section class="page-shell hero-section" aria-label="TapNav overview media">
+        <figure class="hero-media">
+          <img
+            src="assets/figures/tapnav-teaser.webp"
+            alt="TapNav hardware and simulation overview showing a Unitree G1 navigating through tactile contact"
+          />
+          <!--
+          <video autoplay muted loop playsinline poster="assets/teaser.webp">
+            <source src="assets/overview.mp4" type="video/mp4" />
+          </video>
+          -->
+          <figcaption>
+            TapNav uses actively planned tactile probing to navigate a humanoid through room-scale
+            indoor environments without cameras or LiDAR.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="content-section narrow-shell" id="abstract">
+        <h2>Abstract</h2>
+        <p class="abstract">
+          Navigation in visually compromised environments is challenging when regular visual
+          perception is unavailable. We present TapNav, a humanoid navigation framework that
+          enables a robot to seek an endpoint by touching surrounding indoor structures without a
+          visual sensing modality. The system combines three components: a sensorized contact
+          interface and processing pipeline for reliable environmental touch; a low-level
+          controller that coordinates locomotion, balance, and regulated end-effector contact; and
+          an active belief-space planner that selects informative movement and contact actions to
+          bound localization uncertainty while navigating toward the destination.
+        </p>
+      </section>
+
+      <!-- Results are organized as video-led stories, following the reference page. -->
+      <section class="content-section page-shell demos" id="experiments">
+        <div class="demo-heading">
+          <h2>Touch to Navigate</h2>
+          <p>End-to-end tactile exploration and exit-seeking with no visual observations.</p>
+        </div>
+
+        <article class="demo-block">
+          <div class="video-placeholder video-placeholder-wide" role="img" aria-label="Overview video placeholder"></div>
+          <h3>Vision-Free Navigation in Visually Degraded Environments</h3>
+          <p class="demo-note">Video experiments are not yet included in the Overleaf resources.</p>
+        </article>
+
+        <div class="demo-heading demo-heading-spaced">
+          <h2>Mapped and Unmapped Navigation</h2>
+          <p>The same tactile interface supports navigation with and without a prior floorplan.</p>
+        </div>
+
+        <div class="two-column-media">
+          <article class="demo-block">
+            <div class="video-placeholder" role="img" aria-label="Mapped navigation video placeholder"></div>
+            <h3>Navigation with a Known Floorplan</h3>
+            <p class="demo-note">Contact observations localize the robot and resolve pose ambiguity.</p>
+          </article>
+
+          <article class="demo-block">
+            <div class="video-placeholder" role="img" aria-label="Unmapped navigation video placeholder"></div>
+            <h3>Navigation without a Prior Map</h3>
+            <p class="demo-note">Boundary exploration grows a local map and searches for openings.</p>
+          </article>
+        </div>
+
+        <div class="demo-heading demo-heading-spaced">
+          <h2>Contact-Rich Behaviors</h2>
+          <p>Short clips can isolate the behaviors that make the full system work.</p>
+        </div>
+
+        <div class="three-column-media">
+          <article class="demo-block compact">
+            <div class="video-placeholder compact-video" role="img" aria-label="Regulated contact video placeholder"></div>
+            <h3>Regulated Contact</h3>
+          </article>
+          <article class="demo-block compact">
+            <div class="video-placeholder compact-video" role="img" aria-label="Opening discovery video placeholder"></div>
+            <h3>Opening Discovery</h3>
+          </article>
+          <article class="demo-block compact">
+            <div class="video-placeholder compact-video" role="img" aria-label="Balance and recovery video placeholder"></div>
+            <h3>Balance and Recovery</h3>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section page-shell method" id="method">
+        <h2>Method</h2>
+
+        <article class="method-subsection">
+          <h3>System Overview</h3>
+          <p>
+            Tactile observations and proprioception are processed into reliable contact events,
+            fused into the robot's pose belief, and used by a global and local planner to select
+            goal-directed movement and contact actions. A low-level controller executes approach,
+            contact, and retract motions.
+          </p>
+          <figure class="method-figure">
+            <img
+              src="assets/figures/tapnav-system-overview.webp"
+              alt="TapNav system overview with robot observations, belief update, global and local planners, and low-level controller"
+            />
+            <figcaption>
+              Overview of TapNav. Tactile observations and proprioception update the pose belief;
+              the planner selects movement and tactile probes; the controller executes the action.
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="method-subsection">
+          <h3>Reliable Tactile Hardware and Contact Processing</h3>
+          <p>
+            Each end-effector carries a SensX tactile sensor. The processing stack converts a
+            tactile image into a total activation signal, filters it into a normal-force estimate,
+            and declares a contact when the filtered force exceeds the contact threshold.
+          </p>
+          <figure class="method-figure figure-narrow">
+            <img
+              src="assets/figures/tactile-hardware.webp"
+              alt="SensX tactile sensor, tactile activation pipeline, normal force estimate, and contact outcome"
+              loading="lazy"
+            />
+            <figcaption>
+              Sensor construction and the current contact-processing pipeline used on the Unitree
+              G1 hardware.
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="method-subsection">
+          <h3>Belief-Space Tactile Navigation Planning</h3>
+          <p>
+            TapNav maintains a belief over the planar robot pose. At each sensing location, the
+            local planner evaluates reachable probes and selects the action with the greatest
+            expected information gain while accounting for both contact and miss outcomes.
+          </p>
+          <div class="research-figure-grid">
+            <figure class="method-figure">
+              <img
+                src="assets/figures/probe-selection.webp"
+                alt="Candidate tactile probe selection with contact and miss outcomes"
+                loading="lazy"
+              />
+              <figcaption>
+                Reachable contact and miss outcomes are compared against the current end-effector
+                position and ground truth.
+              </figcaption>
+            </figure>
+            <figure class="method-figure">
+              <img
+                src="assets/figures/information-gain.webp"
+                alt="Predicted contact probability and posterior beliefs for tactile hit and miss outcomes"
+                loading="lazy"
+              />
+              <figcaption>
+                A probe produces a binary contact or miss outcome; each outcome induces a different
+                posterior and information gain.
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="method-subsection">
+          <h3>Low-Level Locomotion Controller</h3>
+          <p>
+            The controller uses separate upper- and lower-body policies with shared whole-body
+            proprioception. The upper-body policy tracks end-effector pose and force, while the
+            lower-body policy tracks precise footstep commands for stop-and-go navigation.
+          </p>
+          <figure class="method-figure">
+            <img
+              src="assets/figures/controller.webp"
+              alt="TapNav low-level controller with upper-body and lower-body policies"
+              loading="lazy"
+            />
+            <figcaption>
+              Upper-body end-effector pose and force tracking and lower-body footstep tracking are
+              trained jointly with shared whole-body proprioception.
+            </figcaption>
+          </figure>
+        </article>
+
+        <div class="method-columns">
+          <article class="method-summary">
+            <h3>Global Planner</h3>
+            <p>
+              Computes a collision-free route to the goal while keeping predicted pose uncertainty
+              bounded. Route subgoals specify the next planar displacement and sensing location.
+            </p>
+          </article>
+          <article class="method-summary">
+            <h3>Local Planner</h3>
+            <p>
+              Generates end-effector probe candidates at each sensing location and chooses the
+              action that maximizes expected information gain about the robot pose.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section narrow-shell" id="bibtex">
+        <div class="bibtex-heading">
+          <h2>BibTeX</h2>
+          <button class="copy-button" type="button" data-copy-target="bibtex-code">Copy</button>
+        </div>
+        <pre id="bibtex-code"><code>@inproceedings{anonymous2027tapnav,
+  title     = {TapNav: Humanoid Navigation through Tactile Active Perception},
+  author    = {Anonymous Authors},
+  booktitle = {Under Review},
+  year      = {2027}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TapNav · Anonymous project page · <span data-year></span></p>
+      <p>Structure inspired by the HOVER academic project page.</p>
+    </footer>
+  </body>
+</html>

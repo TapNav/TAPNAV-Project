@@ -1,0 +1,61 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="100" y1="60" x2="1080" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#142F2A"/>
+      <stop offset="1" stop-color="#06110F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(899 326) rotate(144.4) scale(319 319)">
+      <stop stop-color="#8EE9C5" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#8EE9C5" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" rx="26" fill="url(#bg)"/>
+  <rect width="1200" height="900" rx="26" fill="url(#glow)"/>
+
+  <g opacity=".14" stroke="#A8EBD1">
+    <path d="M0 720H1200"/>
+    <path d="M0 650H1200"/>
+    <path d="M0 580H1200"/>
+    <path d="M160 0V900"/>
+    <path d="M280 0V900"/>
+    <path d="M400 0V900"/>
+    <path d="M520 0V900"/>
+    <path d="M640 0V900"/>
+    <path d="M760 0V900"/>
+    <path d="M880 0V900"/>
+    <path d="M1000 0V900"/>
+  </g>
+
+  <!-- Environment boundary -->
+  <path d="M1000 120V716H1108" stroke="#B8D9CC" stroke-opacity=".42" stroke-width="16"/>
+  <path d="M1000 125L1064 95V680L1000 716V125Z" fill="#17332D" stroke="#B8D9CC" stroke-opacity=".32" stroke-width="3"/>
+
+  <!-- Abstract humanoid -->
+  <circle cx="467" cy="258" r="62" fill="#D9E7E0"/>
+  <path d="M410 350C410 329 427 312 448 312H507C528 312 545 329 545 350V528H410V350Z" fill="#B9CEC5"/>
+  <path d="M432 526L397 727" stroke="#B9CEC5" stroke-width="48" stroke-linecap="round"/>
+  <path d="M521 526L570 727" stroke="#B9CEC5" stroke-width="48" stroke-linecap="round"/>
+  <path d="M414 372L315 527" stroke="#B9CEC5" stroke-width="38" stroke-linecap="round"/>
+  <path d="M537 372L713 416" stroke="#B9CEC5" stroke-width="38" stroke-linecap="round"/>
+  <path d="M713 416L938 356" stroke="#D8E6E0" stroke-width="31" stroke-linecap="round"/>
+  <circle cx="961" cy="349" r="30" fill="#FF7A5C"/>
+
+  <!-- Tactile pulses -->
+  <circle cx="961" cy="349" r="68" stroke="#8EE9C5" stroke-opacity=".8" stroke-width="3"/>
+  <circle cx="961" cy="349" r="113" stroke="#8EE9C5" stroke-opacity=".45" stroke-width="3"/>
+  <circle cx="961" cy="349" r="162" stroke="#8EE9C5" stroke-opacity=".2" stroke-width="3"/>
+  <circle cx="961" cy="349" r="42" fill="#8EE9C5" fill-opacity=".22" filter="url(#blur)"/>
+
+  <!-- Trajectory -->
+  <path d="M162 716C306 669 289 600 401 574C540 542 617 660 736 620C831 587 835 484 944 456" stroke="#8EE9C5" stroke-opacity=".7" stroke-width="4" stroke-dasharray="14 14"/>
+  <path d="M932 452L959 451L946 475" stroke="#8EE9C5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="72" y="84" fill="#8EE9C5" font-size="18" font-weight="700" letter-spacing="5">TACTILE EXPLORATION</text>
+    <text x="72" y="820" fill="#FFFFFF" fill-opacity=".76" font-size="20">Replace this illustration with the final teaser image or video.</text>
+  </g>
+</svg>
