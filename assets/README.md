@@ -2,34 +2,29 @@
 
 Keep public page assets compressed and use lowercase filenames without spaces.
 
-## Imported from the current Overleaf project
+## Imported from the final LaTeX references
 
-- `figures/tapnav-teaser.webp`: hardware and simulation teaser.
-- `figures/tapnav-system-overview.webp`: full TapNav pipeline.
-- `figures/tactile-hardware.webp`: SensX hardware and contact processing.
-- `figures/probe-selection.webp`: contact/miss probe representation.
-- `figures/information-gain.webp`: hit/miss belief update figure.
-- `figures/controller.webp`: upper/lower-body controller diagram.
+- `figures/tapnav-teaser.webp`: `Figure 1/realfinal.pdf`.
+- `figures/tapnav-system-overview.webp`: `Figure 2/Ver.5.1.pdf`.
+- `figures/tactile-hardware.webp`: `Figure 3/Hardware_fig_v5.5.pdf`.
+- `figures/tactile-likelihood.webp`: `Figure 4/Ver.10.1.pdf`.
+- `figures/information-gain.webp`: `Figure 5/ig_hit_miss_3col.pdf`.
+- `figures/controller.webp`: `controller.pdf`.
+- `figures/simulation-results.webp`: `Figure 6/Fig6_v3-compressed.pdf`.
+- `figures/yaw-noise.webp`: `Figure 8/Fig.8.pdf`.
+- `figures/controller-comparison.webp`: `controller_sim.pdf`.
+- `figures/real-world-results.webp`: `real_worldVer.2.pdf`.
 
 The original PDF and PNG figures remain in the Overleaf project. These WebP
-copies are optimized for GitHub Pages and should be regenerated when the paper
-figures change.
+copies are optimized for GitHub Pages. Always follow the `includegraphics`
+paths in `root.tex`; the source folder also contains older figure versions.
 
 ## Videos still needed
 
-- `overview.mp4`: 60-90 second overview video, H.264.
-- `mapped-navigation.mp4`: mapped-navigation result.
-- `unmapped-navigation.mp4`: navigation result without a prior map.
-- `contact.mp4`, `opening.mp4`, `recovery.mp4`: short behavior clips.
+- `letsgo.mp4`: current end-to-end overview demo.
+- Office hallway and kitchen navigation clips.
+- Approach, contact-motion, and retract clips.
 
-For a looping hero video, replace the current hero `<img>` with:
-
-```html
-<video autoplay muted loop playsinline poster="assets/figures/tapnav-teaser.webp">
-  <source src="assets/overview.mp4" type="video/mp4" />
-</video>
-```
-
-Use the same replacement pattern for each `.video-placeholder` block in
-`index.html`. Full-width videos should use a 16:9 aspect ratio. The three
-contact-rich behavior clips work best with matching dimensions and durations.
+Replace the corresponding black `.video-placeholder` only when a real clip is
+available. Keep full-width videos at 16:9 and use matching dimensions for the
+three short whole-body probing clips.
