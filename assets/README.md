@@ -19,12 +19,6 @@ The original PDF and PNG figures remain in the Overleaf project. These WebP
 copies are optimized for GitHub Pages. Always follow the `includegraphics`
 paths in `root.tex`; the source folder also contains older figure versions.
 
-## Videos still needed
+## Video
 
 - `letsgo.mp4`: current end-to-end overview demo.
-- Office hallway and kitchen navigation clips.
-- Approach, contact-motion, and retract clips.
-
-Replace the corresponding black `.video-placeholder` only when a real clip is
-available. Keep full-width videos at 16:9 and use matching dimensions for the
-three short whole-body probing clips.
