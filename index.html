@@ -21,18 +21,20 @@
 
     <title>TAPNAV | Humanoid Navigation through Tactile Active Perception</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=f1ca7ecf" />
+    <script src="script.js?v=11d1d445" defer></script>
   </head>
 
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
+
     <main id="main-content">
-      <!-- Paper identity: mirrors the title/authors/venue/resources hierarchy of HOVER. -->
+      <!-- Update author and publication metadata only when confirmed. -->
       <header class="paper-header page-shell">
         <h1>
-          <strong>TAPNAV:</strong> Humanoid Navigation through Tactile Active Perception
+          <strong>TAPNAV:</strong> Humanoid Navigation<br class="title-break" />
+          through <em>Tactile Active Perception</em>
         </h1>
 
         <div class="authors" aria-label="Paper authors">
@@ -44,15 +46,15 @@
 
         <nav class="paper-links" aria-label="Paper resources">
           <!-- Point this link to the final compiled manuscript when it is ready. -->
-          <span class="pill is-disabled" aria-disabled="true" title="The current compiled PDF is incomplete">
+          <span class="pill is-disabled" aria-disabled="true" title="Paper PDF coming soon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h7l5 5v15H7V2Zm7 1.8V8h4.2M10 13h6M10 17h6" /></svg>
             PDF
           </span>
-          <span class="pill is-disabled" aria-disabled="true">
+          <a class="pill pill-primary" href="#demos">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z" /></svg>
             Video
-          </span>
-          <span class="pill is-disabled" aria-disabled="true">
+          </a>
+          <span class="pill is-disabled" aria-disabled="true" title="Code coming soon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" /></svg>
             Code
           </span>
@@ -63,6 +65,7 @@
         <figure class="hero-media">
           <img
             src="assets/figures/tapnav-teaser.webp"
+              width="1800" height="622"
             alt="TAPNAV planned path, planned tactile action, and Unitree G1 deployment in a kitchen environment"
           />
           <figcaption>
@@ -74,7 +77,14 @@
         </figure>
       </section>
 
-      <section class="content-section narrow-shell" id="abstract">
+      <nav class="page-index page-shell" aria-label="Page sections">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#demos">Video</a>
+        <a href="#experiments">Experiments</a>
+      </nav>
+
+      <section class="content-section page-shell text-section" id="abstract">
         <h2>Abstract</h2>
         <p class="abstract">
           Navigation in vision-denied environments is challenging for humanoid robots because
@@ -106,9 +116,10 @@
             goal-directed navigation without vision.
           </p>
           <figure class="method-figure">
-            <a class="figure-detail-link" href="assets/figures/tapnav-system-overview.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
-<img
+            <a class="figure-detail-link" href="assets/figures/tapnav-system-overview.webp" target="_blank" rel="noopener" aria-label="View system overview figure at full size">
+              <img
               src="assets/figures/tapnav-system-overview.webp"
+              width="1800" height="937"
               alt="TAPNAV system overview with robot observations, belief update, global and local planners, and low-level controller"
             />
             </a>
@@ -124,9 +135,10 @@
           <article class="method-subsection framework-detail">
             <h3>Tactile Sensing and Contact Processing</h3>
             <figure class="method-figure">
-              <a class="figure-detail-link" href="assets/figures/tactile-hardware.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
-<img
+              <a class="figure-detail-link" href="assets/figures/tactile-hardware.webp" target="_blank" rel="noopener" aria-label="View tactile sensing and contact processing figure at full size">
+              <img
                 src="assets/figures/tactile-hardware.webp"
+              width="1400" height="445"
                 alt="Tactile image processing, force calibration, contact outcome, and tactile end-effector construction"
                 loading="lazy"
               />
@@ -147,9 +159,10 @@
           <article class="method-subsection framework-detail">
             <h3>Low-Level Controller</h3>
             <figure class="method-figure">
-              <a class="figure-detail-link" href="assets/figures/controller.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
-<img
+              <a class="figure-detail-link" href="assets/figures/controller.webp" target="_blank" rel="noopener" aria-label="View low-level controller figure at full size">
+              <img
                 src="assets/figures/controller.webp"
+              width="1400" height="700"
                 alt="TAPNAV low-level controller with upper-body and lower-body policies"
                 loading="lazy"
               />
@@ -198,12 +211,14 @@
       </section>
 
       <section class="content-section page-shell results" id="experiments">
-        <h2>Experiments</h2>
-        <p class="section-intro">
-          We evaluate TAPNAV in MuJoCo simulation and on a Unitree G1 humanoid to examine
-          uncertainty-bounded state estimation, low-level positioning accuracy, and integrated
-          real-world navigation.
-        </p>
+        <div class="section-heading">
+          <h2>Experiments</h2>
+          <p class="section-intro">
+            We evaluate TAPNAV in MuJoCo simulation and on a Unitree G1 humanoid to examine
+            uncertainty-bounded state estimation, low-level positioning accuracy, and integrated
+            real-world navigation.
+          </p>
+        </div>
 
         <article class="result-subsection" id="simulation-results">
           <h3>Simulation Results</h3>
@@ -219,7 +234,6 @@
               <figure class="experiment-video-card is-tapnav" id="sim-map-01-tapnav">
                 <!-- Replace this placeholder with a video element when sim-map-01-tapnav.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 01, TAPNAV: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>TAPNAV</figcaption>
@@ -227,7 +241,6 @@
               <figure class="experiment-video-card" id="sim-map-01-random-touch">
                 <!-- Replace this placeholder with a video element when sim-map-01-random-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 01, Random-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Random-touch</figcaption>
@@ -235,7 +248,6 @@
               <figure class="experiment-video-card" id="sim-map-01-sweep-touch">
                 <!-- Replace this placeholder with a video element when sim-map-01-sweep-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 01, Sweep-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Sweep-touch</figcaption>
@@ -243,7 +255,6 @@
               <figure class="experiment-video-card" id="sim-map-01-odometry-only">
                 <!-- Replace this placeholder with a video element when sim-map-01-odometry-only.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 01, Odometry-only: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Odometry-only</figcaption>
@@ -254,7 +265,6 @@
               <figure class="experiment-video-card is-tapnav" id="sim-map-02-tapnav">
                 <!-- Replace this placeholder with a video element when sim-map-02-tapnav.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 02, TAPNAV: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>TAPNAV</figcaption>
@@ -262,7 +272,6 @@
               <figure class="experiment-video-card" id="sim-map-02-random-touch">
                 <!-- Replace this placeholder with a video element when sim-map-02-random-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 02, Random-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Random-touch</figcaption>
@@ -270,7 +279,6 @@
               <figure class="experiment-video-card" id="sim-map-02-sweep-touch">
                 <!-- Replace this placeholder with a video element when sim-map-02-sweep-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 02, Sweep-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Sweep-touch</figcaption>
@@ -278,7 +286,6 @@
               <figure class="experiment-video-card" id="sim-map-02-odometry-only">
                 <!-- Replace this placeholder with a video element when sim-map-02-odometry-only.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 02, Odometry-only: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Odometry-only</figcaption>
@@ -289,7 +296,6 @@
               <figure class="experiment-video-card is-tapnav" id="sim-map-03-tapnav">
                 <!-- Replace this placeholder with a video element when sim-map-03-tapnav.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 03, TAPNAV: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>TAPNAV</figcaption>
@@ -297,7 +303,6 @@
               <figure class="experiment-video-card" id="sim-map-03-random-touch">
                 <!-- Replace this placeholder with a video element when sim-map-03-random-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 03, Random-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Random-touch</figcaption>
@@ -305,7 +310,6 @@
               <figure class="experiment-video-card" id="sim-map-03-sweep-touch">
                 <!-- Replace this placeholder with a video element when sim-map-03-sweep-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 03, Sweep-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Sweep-touch</figcaption>
@@ -313,7 +317,6 @@
               <figure class="experiment-video-card" id="sim-map-03-odometry-only">
                 <!-- Replace this placeholder with a video element when sim-map-03-odometry-only.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 03, Odometry-only: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Odometry-only</figcaption>
@@ -324,7 +327,6 @@
               <figure class="experiment-video-card is-tapnav" id="sim-map-04-tapnav">
                 <!-- Replace this placeholder with a video element when sim-map-04-tapnav.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 04, TAPNAV: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>TAPNAV</figcaption>
@@ -332,7 +334,6 @@
               <figure class="experiment-video-card" id="sim-map-04-random-touch">
                 <!-- Replace this placeholder with a video element when sim-map-04-random-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 04, Random-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Random-touch</figcaption>
@@ -340,7 +341,6 @@
               <figure class="experiment-video-card" id="sim-map-04-sweep-touch">
                 <!-- Replace this placeholder with a video element when sim-map-04-sweep-touch.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 04, Sweep-touch: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Sweep-touch</figcaption>
@@ -348,7 +348,6 @@
               <figure class="experiment-video-card" id="sim-map-04-odometry-only">
                 <!-- Replace this placeholder with a video element when sim-map-04-odometry-only.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Map 04, Odometry-only: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Odometry-only</figcaption>
@@ -356,11 +355,14 @@
             </section>
           </div>
           <figure class="method-figure result-figure">
+            <a class="figure-detail-link" href="assets/figures/simulation-results.webp" target="_blank" rel="noopener" aria-label="View simulation results figure at full size">
             <img
               src="assets/figures/simulation-results.webp"
+              width="1800" height="547"
               alt="TAPNAV trajectories, tactile contact points, localization uncertainty, and error across four simulation maps"
               loading="lazy"
             />
+          </a>
             <figcaption>
               TAPNAV navigation performance in simulation. Each map shows the estimated and
               ground-truth trajectories, tactile contact points, and the corresponding position and
@@ -387,7 +389,6 @@
               <figure class="experiment-video-card is-tapnav" id="real-world-trial-01-tapnav">
                 <!-- Replace this placeholder with a video element when real-world-trial-01-tapnav.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 01, TAPNAV: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>TAPNAV</figcaption>
@@ -395,7 +396,6 @@
               <figure class="experiment-video-card" id="real-world-trial-01-odometry-only">
                 <!-- Replace this placeholder with a video element when real-world-trial-01-odometry-only.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 01, Odometry-only: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Odometry-only</figcaption>
@@ -406,7 +406,6 @@
               <figure class="experiment-video-card is-tapnav" id="real-world-trial-02-tapnav">
                 <!-- Replace this placeholder with a video element when real-world-trial-02-tapnav.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 02, TAPNAV: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>TAPNAV</figcaption>
@@ -414,7 +413,6 @@
               <figure class="experiment-video-card" id="real-world-trial-02-odometry-only">
                 <!-- Replace this placeholder with a video element when real-world-trial-02-odometry-only.mp4 is ready. -->
                 <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 02, Odometry-only: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                   <span>Video coming soon</span>
                 </div>
                 <figcaption>Odometry-only</figcaption>
@@ -422,18 +420,21 @@
             </section>
           </div>
           <figure class="method-figure result-figure">
+            <a class="figure-detail-link" href="assets/figures/real-world-results.webp" target="_blank" rel="noopener" aria-label="View real-world results figure at full size">
             <img
               src="assets/figures/real-world-results.webp"
+              width="1800" height="995"
               alt="Unitree G1 real-world navigation in an office hallway and kitchen with paths and tactile probes"
               loading="lazy"
             />
+          </a>
             <figcaption>
               TAPNAV deployed on a Unitree G1 in an office hallway and kitchen. Each environment
               shows deployment snapshots together with the robot path and active tactile probes in
               the robot's egocentric view.
             </figcaption>
           </figure>
-          <section class="video-gallery-section" aria-labelledby="drift-recovery-title">
+          <section class="video-gallery-section recovery-block" aria-labelledby="drift-recovery-title">
             <div class="demo-heading">
               <h3 id="drift-recovery-title">Drift Recovery</h3>
             </div>
@@ -441,7 +442,6 @@
                 <figure class="experiment-video-card" id="drift-recovery">
                   <!-- Replace this placeholder with a video element when drift-recovery.mp4 is ready. -->
                   <div class="experiment-video-placeholder" role="img" aria-label="Drift Recovery: video coming soon">
-                    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
                     <span>Video coming soon</span>
                   </div>
                   <figcaption>Drift Recovery</figcaption>
@@ -454,9 +454,10 @@
           <article class="result-subsection evaluation-detail" id="controller-accuracy">
             <h3>Low-Level Controller Accuracy</h3>
             <figure class="method-figure result-figure result-figure-narrow">
-              <a class="figure-detail-link" href="assets/figures/controller-comparison.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
-<img
+              <a class="figure-detail-link" href="assets/figures/controller-comparison.webp" target="_blank" rel="noopener" aria-label="View controller accuracy figure at full size">
+              <img
                 src="assets/figures/controller-comparison.webp"
+              width="1400" height="479"
                 alt="Open-loop trajectory and heading comparison between velocity and footstep tracking policies"
                 loading="lazy"
               />
@@ -475,9 +476,10 @@
           <article class="result-subsection evaluation-detail" id="yaw-noise-sensitivity">
             <h3>Yaw-Noise Sensitivity</h3>
             <figure class="method-figure result-figure result-figure-narrow">
-              <a class="figure-detail-link" href="assets/figures/yaw-noise.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
-<img
+              <a class="figure-detail-link" href="assets/figures/yaw-noise.webp" target="_blank" rel="noopener" aria-label="View yaw-noise sensitivity figure at full size">
+              <img
                 src="assets/figures/yaw-noise.webp"
+              width="1400" height="450"
                 alt="Position error, yaw error, and success rate under increasing yaw noise"
                 loading="lazy"
               />
@@ -495,7 +497,7 @@
         </div>
       </section>
 
-      <section class="content-section narrow-shell conclusion" id="conclusion">
+      <section class="content-section page-shell text-section conclusion" id="conclusion">
         <h2>Conclusion</h2>
         <p>
           TAPNAV integrates tactile active probing, belief-space localization, uncertainty-aware
@@ -507,12 +509,13 @@
         </p>
       </section>
 
-      <section class="content-section narrow-shell" id="bibtex">
+      <section class="content-section page-shell citation-section" id="bibtex">
         <div class="bibtex-heading">
           <h2>BibTeX</h2>
-          <button class="copy-button" type="button" data-copy-target="bibtex-code">Copy</button>
+          <button class="copy-button" type="button" data-copy-target="bibtex-code" aria-label="Copy BibTeX citation">Copy</button>
         </div>
-        <pre id="bibtex-code"><code>@inproceedings{anonymous2027TAPNAV,
+        <p class="visually-hidden" role="status" id="copy-status"></p>
+        <pre id="bibtex-code" tabindex="0" aria-label="BibTeX citation"><code>@inproceedings{anonymous2027TAPNAV,
   title     = {TAPNAV: Humanoid Navigation through Tactile Active Perception},
   author    = {Anonymous Authors},
   booktitle = {Under Review},

@@ -49,7 +49,7 @@ and caption. Create `assets/videos/` and use the slot ID as the filename:
 
 Slots use a 16:9 aspect ratio. Desktop shows a 4-by-4 simulation grid and a
 2-by-2 real-world comparison grid. Smaller screens keep simulations grouped
-by map in two columns; real-world pairs stack only on the narrowest screens.
+by map in two columns; real-world pairs remain side by side.
 Placeholders do not request missing files or expose inactive play controls.
 
 ## Framework and evaluation layout
@@ -61,3 +61,33 @@ Controller accuracy and yaw-noise sensitivity share a row after the navigation
 results. These paired sections stack on smaller screens. Framework and compact
 evaluation plots link to their full-size original images. Retained body text
 and figure captions have not been rewritten for this layout revision.
+
+## Research-page design
+
+The page refines the original green research-page design: a centered paper title,
+serif abstract and conclusion, and a large teaser with a dark caption. The teaser
+is wider and closer to the resource links. Smaller radii, lighter borders and
+shadows, and plain figure captions keep the research images prominent.
+
+Comparison videos retain their map and trial groups. Neutral placeholders and
+green TAPNAV labels distinguish the methods without repeating decorated cards.
+The original footer attribution is retained. No separate logo or brand navigation
+has been added. The title emphasizes its tactile-perception phrase with a serif
+italic. A single pale-green abstract area adds contrast to the page; the remaining
+body sections keep their plain backgrounds. Figure links reveal a full-size hint
+on hover or keyboard focus, while unavailable video slots remain static.
+
+A simple section index sits below the teaser. The overview video
+has a dark green presentation area, and experiment headings use a compact
+title-and-introduction row on desktop. Both adapt to narrow screens.
+
+The page uses local system fonts, one stylesheet, and a small script for citation
+copying and reduced-motion handling. It needs no external library or build step.
+The Video link opens the existing overview demo; figure links open full-size
+images. The copy button announces success or selects the citation when clipboard
+access is unavailable. Reduced-motion settings disable automatic video playback.
+
+Paper metadata, body text, captions, and original media are unchanged. PDF and
+Code remain unavailable until real links are supplied. CSS and JavaScript URLs
+include content versions to refresh cached local previews; update these versions
+in `index.html` when editing those files.
