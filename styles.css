@@ -517,6 +517,122 @@ h3 {
     #101715;
 }
 
+/* Experiment video placeholders: four methods per map, then hardware trials. */
+.video-gallery-section + .video-gallery-section {
+  margin-top: clamp(52px, 7vw, 80px);
+}
+
+.simulation-video-grid {
+  display: grid;
+  gap: 26px;
+}
+
+.simulation-map-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.simulation-map-row h4 {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.experiment-video-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+}
+
+.experiment-video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  aspect-ratio: 16 / 9;
+  background: #edf2ee;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.experiment-video-placeholder svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+.experiment-video-card figcaption {
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.experiment-video-card.is-tapnav {
+  border-color: #8ac3a5;
+}
+
+.experiment-video-card.is-tapnav figcaption {
+  color: var(--green-dark);
+}
+
+.experiment-video-card.is-tapnav .experiment-video-placeholder {
+  background: #e4f1e9;
+  color: var(--green-dark);
+}
+
+.experiment-video-card video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  object-fit: contain;
+}
+
+.real-world-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.recovery-video-slot {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+@media (max-width: 760px) {
+  .simulation-map-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .real-world-video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experiment-video-placeholder {
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .experiment-video-card figcaption {
+    font-size: 12px;
+  }
+}
+
 .method > h2 {
   text-align: center;
 }
