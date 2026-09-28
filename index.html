@@ -95,6 +95,81 @@
         </p>
       </section>
 
+      <section class="content-section page-shell method" id="method">
+        <h2>Method</h2>
+        <article class="method-subsection system-overview">
+          <h3>System Overview</h3>
+          <p>
+            TAPNAV localizes the robot on a known, static map using odometry, an IMU-based heading
+            estimate, and tactile contact with mapped surfaces. A global route planner, local
+            tactile action planner, pose estimator, and low-level controller jointly enable
+            goal-directed navigation without vision.
+          </p>
+          <figure class="method-figure">
+            <a class="figure-detail-link" href="assets/figures/tapnav-system-overview.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
+<img
+              src="assets/figures/tapnav-system-overview.webp"
+              alt="TAPNAV system overview with robot observations, belief update, global and local planners, and low-level controller"
+            />
+            </a>
+            <figcaption>
+              Odometry, IMU, and tactile observations together update the robot's SE(2) pose
+              belief. The global planner computes an uncertainty-bounded route with predicted
+              tactile corrections, the local planner selects informative probes based on expected
+              information gain, and the low-level controller executes locomotion and probing.
+            </figcaption>
+          </figure>
+        </article>
+        <div class="framework-detail-grid">
+          <article class="method-subsection framework-detail">
+            <h3>Tactile Sensing and Contact Processing</h3>
+            <figure class="method-figure">
+              <a class="figure-detail-link" href="assets/figures/tactile-hardware.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
+<img
+                src="assets/figures/tactile-hardware.webp"
+                alt="Tactile image processing, force calibration, contact outcome, and tactile end-effector construction"
+                loading="lazy"
+              />
+            </a>
+              <figcaption>
+                Tactile end-effector design and contact-processing pipeline. The tactile image is
+                aggregated into a total activation, calibrated to a normal force, and converted to a
+                binary contact outcome using a force threshold.
+              </figcaption>
+            </figure>
+            <p>
+              Each end-effector integrates a TouchTronix SensX 160 tactile sensor covered by an
+              Ecoflex 00-50 silicone pad. The tactile image is aggregated into a total activation,
+              calibrated to an estimated normal force, and thresholded to produce the binary contact
+              outcome used by the planner.
+            </p>
+          </article>
+          <article class="method-subsection framework-detail">
+            <h3>Low-Level Controller</h3>
+            <figure class="method-figure">
+              <a class="figure-detail-link" href="assets/figures/controller.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
+<img
+                src="assets/figures/controller.webp"
+                alt="TAPNAV low-level controller with upper-body and lower-body policies"
+                loading="lazy"
+              />
+            </a>
+              <figcaption>
+                The low-level controller is composed of upper- and lower-body policies. The
+                upper-body policy tracks target end-effector pose and force, while the lower-body
+                policy tracks footstep commands. Both policies are jointly trained with shared
+                whole-body proprioception.
+              </figcaption>
+            </figure>
+            <p>
+              To support frequent stop-and-go maneuvers while maintaining contact with the
+              surroundings, TAPNAV learns a whole-body controller that tracks end-effector pose and
+              force together with footstep placement.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="content-section page-shell demos" id="demos">
         <div class="demo-heading">
           <h2>Vision-Denied Navigation</h2>
@@ -122,14 +197,22 @@
         </article>
       </section>
 
-      <section class="content-section page-shell experiment-videos" id="experiment-videos" aria-labelledby="experiment-videos-title">
-        <h2 id="experiment-videos-title">Navigation Videos</h2>
+      <section class="content-section page-shell results" id="experiments">
+        <h2>Experiments</h2>
+        <p class="section-intro">
+          We evaluate TAPNAV in MuJoCo simulation and on a Unitree G1 humanoid to examine
+          uncertainty-bounded state estimation, low-level positioning accuracy, and integrated
+          real-world navigation.
+        </p>
 
-        <section class="video-gallery-section" aria-labelledby="simulation-videos-title">
-          <div class="demo-heading">
-            <h3 id="simulation-videos-title">Simulation Comparisons</h3>
-            <p>Four maps, with TAPNAV and three baselines on each map.</p>
-          </div>
+        <article class="result-subsection" id="simulation-results">
+          <h3>Simulation Results</h3>
+          <p>
+            Across four maps, TAPNAV maintains estimated trajectories close to the simulator ground
+            truth. Contacts with different surface normals around corners and pillars provide
+            complementary position constraints, while flat-wall contacts reduce uncertainty along
+            the surface normal and can also reduce heading uncertainty.
+          </p>
           <div class="simulation-video-grid">
             <section class="simulation-map-row" aria-labelledby="simulation-map-1">
               <h4 id="simulation-map-1">Map 01</h4>
@@ -272,215 +355,6 @@
               </figure>
             </section>
           </div>
-        </section>
-
-        <section class="video-gallery-section" aria-labelledby="real-world-videos-title">
-          <div class="demo-heading">
-            <h3 id="real-world-videos-title">Real-World Results</h3>
-            <p>Navigation experiments on the Unitree G1.</p>
-          </div>
-          <div class="real-world-video-grid">
-              <figure class="experiment-video-card" id="real-world-01">
-                <!-- Replace this placeholder with a video element when real-world-01.mp4 is ready. -->
-                <div class="experiment-video-placeholder" role="img" aria-label="Real-World Trial 01: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
-                  <span>Video coming soon</span>
-                </div>
-                <figcaption>Real-World Trial 01</figcaption>
-              </figure>
-              <figure class="experiment-video-card" id="real-world-02">
-                <!-- Replace this placeholder with a video element when real-world-02.mp4 is ready. -->
-                <div class="experiment-video-placeholder" role="img" aria-label="Real-World Trial 02: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
-                  <span>Video coming soon</span>
-                </div>
-                <figcaption>Real-World Trial 02</figcaption>
-              </figure>
-              <figure class="experiment-video-card" id="real-world-03">
-                <!-- Replace this placeholder with a video element when real-world-03.mp4 is ready. -->
-                <div class="experiment-video-placeholder" role="img" aria-label="Real-World Trial 03: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
-                  <span>Video coming soon</span>
-                </div>
-                <figcaption>Real-World Trial 03</figcaption>
-              </figure>
-              <figure class="experiment-video-card" id="real-world-04">
-                <!-- Replace this placeholder with a video element when real-world-04.mp4 is ready. -->
-                <div class="experiment-video-placeholder" role="img" aria-label="Real-World Trial 04: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
-                  <span>Video coming soon</span>
-                </div>
-                <figcaption>Real-World Trial 04</figcaption>
-              </figure>
-          </div>
-        </section>
-
-        <section class="video-gallery-section" aria-labelledby="drift-recovery-title">
-          <div class="demo-heading">
-            <h3 id="drift-recovery-title">First-Floor Drift Recovery</h3>
-          </div>
-          <div class="recovery-video-slot">
-              <figure class="experiment-video-card" id="first-floor-drift-recovery">
-                <!-- Replace this placeholder with a video element when first-floor-drift-recovery.mp4 is ready. -->
-                <div class="experiment-video-placeholder" role="img" aria-label="First-Floor Drift Recovery: video coming soon">
-                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
-                  <span>Video coming soon</span>
-                </div>
-                <figcaption>First-Floor Drift Recovery</figcaption>
-              </figure>
-          </div>
-        </section>
-      </section>
-
-      <section class="content-section page-shell method" id="method">
-        <h2>Method</h2>
-
-        <article class="method-subsection">
-          <h3>System Overview</h3>
-          <p>
-            TAPNAV localizes the robot on a known, static map using odometry, an IMU-based heading
-            estimate, and tactile contact with mapped surfaces. A global route planner, local
-            tactile action planner, pose estimator, and low-level controller jointly enable
-            goal-directed navigation without vision.
-          </p>
-          <figure class="method-figure">
-            <img
-              src="assets/figures/tapnav-system-overview.webp"
-              alt="TAPNAV system overview with robot observations, belief update, global and local planners, and low-level controller"
-            />
-            <figcaption>
-              Odometry, IMU, and tactile observations together update the robot's SE(2) pose
-              belief. The global planner computes an uncertainty-bounded route with predicted
-              tactile corrections, the local planner selects informative probes based on expected
-              information gain, and the low-level controller executes locomotion and probing.
-            </figcaption>
-          </figure>
-        </article>
-
-        <article class="method-subsection">
-          <h3>Tactile Sensing and Contact Processing</h3>
-          <p>
-            Each end-effector integrates a TouchTronix SensX 160 tactile sensor covered by an
-            Ecoflex 00-50 silicone pad. The tactile image is aggregated into a total activation,
-            calibrated to an estimated normal force, and thresholded to produce the binary contact
-            outcome used by the planner.
-          </p>
-          <figure class="method-figure figure-narrow">
-            <img
-              src="assets/figures/tactile-hardware.webp"
-              alt="Tactile image processing, force calibration, contact outcome, and tactile end-effector construction"
-              loading="lazy"
-            />
-            <figcaption>
-              Tactile end-effector design and contact-processing pipeline. The tactile image is
-              aggregated into a total activation, calibrated to a normal force, and converted to a
-              binary contact outcome using a force threshold.
-            </figcaption>
-          </figure>
-        </article>
-
-        <article class="method-subsection">
-          <h3>Belief-Space Tactile Navigation Planning</h3>
-          <p>
-            TAPNAV maintains an SE(2) pose belief with a particle filter. Odometry propagates pose
-            hypotheses, while tactile and IMU observations correct accumulated drift. The global
-            planner searches for a short route subject to position and heading uncertainty bounds,
-            favoring mapped surfaces when tactile correction is needed.
-          </p>
-          <div class="research-figure-grid">
-            <figure class="method-figure">
-              <img
-                src="assets/figures/tactile-likelihood.webp"
-                alt="Tactile likelihood geometry under two candidate robot pose hypotheses"
-                loading="lazy"
-              />
-              <figcaption>
-                Tactile likelihood. A contact observation favors pose hypotheses that place the
-                end-effector stopping point on a mapped surface; a contact-free observation
-                downweights hypotheses that predict penetration beyond the surface.
-              </figcaption>
-            </figure>
-            <figure class="method-figure">
-              <img
-                src="assets/figures/information-gain.webp"
-                alt="Predicted contact probability and posterior beliefs for tactile hit and miss outcomes"
-                loading="lazy"
-              />
-              <figcaption>
-                Information gain of one probe action. The action model accounts for margin
-                uncertainty and the pose-belief reduction produced by either a contact or a
-                contact-free outcome.
-              </figcaption>
-            </figure>
-          </div>
-        </article>
-
-        <article class="method-subsection">
-          <h3>Expected-Information-Gain-Driven Action Selection</h3>
-          <p>
-            At each subgoal, every candidate probe can produce either a contact or a contact-free
-            observation. TAPNAV selects the action that maximizes the expected information gain
-            over both outcomes, repeats probing on the updated belief, and proceeds when the
-            maximum expected information gain falls below a threshold.
-          </p>
-        </article>
-
-        <article class="method-subsection">
-          <h3>Low-Level Controller</h3>
-          <p>
-            To support frequent stop-and-go maneuvers while maintaining contact with the
-            surroundings, TAPNAV learns a whole-body controller that tracks end-effector pose and
-            force together with footstep placement.
-          </p>
-          <figure class="method-figure">
-            <img
-              src="assets/figures/controller.webp"
-              alt="TAPNAV low-level controller with upper-body and lower-body policies"
-              loading="lazy"
-            />
-            <figcaption>
-              The low-level controller is composed of upper- and lower-body policies. The
-              upper-body policy tracks target end-effector pose and force, while the lower-body
-              policy tracks footstep commands. Both policies are jointly trained with shared
-              whole-body proprioception.
-            </figcaption>
-          </figure>
-        </article>
-
-        <div class="method-columns">
-          <article class="method-summary">
-            <h3>Global Planner</h3>
-            <p>
-              Computes a collision-free route to the goal while keeping predicted pose uncertainty
-              bounded. Route subgoals specify the next planar displacement and sensing location.
-            </p>
-          </article>
-          <article class="method-summary">
-            <h3>Local Planner</h3>
-            <p>
-              Generates end-effector probe candidates at each sensing location and chooses the
-              action that maximizes expected information gain about the robot pose.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section page-shell results" id="experiments">
-        <h2>Experiments</h2>
-        <p class="section-intro">
-          We evaluate TAPNAV in MuJoCo simulation and on a Unitree G1 humanoid to examine
-          uncertainty-bounded state estimation, low-level positioning accuracy, and integrated
-          real-world navigation.
-        </p>
-
-        <article class="result-subsection">
-          <h3>Simulation Results</h3>
-          <p>
-            Across four maps, TAPNAV maintains estimated trajectories close to the simulator ground
-            truth. Contacts with different surface normals around corners and pillars provide
-            complementary position constraints, while flat-wall contacts reduce uncertainty along
-            the surface normal and can also reduce heading uncertainty.
-          </p>
           <figure class="method-figure result-figure">
             <img
               src="assets/figures/simulation-results.webp"
@@ -498,50 +372,55 @@
             with 77.5% for Random-touch, 38.8% for Sweep-touch, and 22.5% for Odometry-only, while
             producing lower position error and comparable yaw error.
           </p>
-          <figure class="method-figure result-figure result-figure-narrow">
-            <img
-              src="assets/figures/yaw-noise.webp"
-              alt="Position error, yaw error, and success rate under increasing yaw noise"
-              loading="lazy"
-            />
-            <figcaption>
-              Yaw-noise sensitivity: position error, yaw error, and success rate. Bands and bars
-              show mean +/- standard error and 95% confidence intervals.
-            </figcaption>
-          </figure>
-          <p>
-            Under increasing IMU heading noise, TAPNAV retains the lowest mean position and yaw
-            errors and the highest success rate among the evaluated methods.
-          </p>
         </article>
 
-        <article class="result-subsection">
-          <h3>Low-Level Controller Accuracy</h3>
-          <p>
-            We compare TAPNAV's footstep controller with a velocity-tracking controller on a
-            sequence of global planar torso targets. Heading errors accumulate under velocity
-            tracking, while the footstep controller follows the target sequence with minimal drift.
-          </p>
-          <figure class="method-figure result-figure result-figure-narrow">
-            <img
-              src="assets/figures/controller-comparison.webp"
-              alt="Open-loop trajectory and heading comparison between velocity and footstep tracking policies"
-              loading="lazy"
-            />
-            <figcaption>
-              Simulated open-loop goal tracking with velocity- and footstep-tracking policies over
-              30 trials per policy: executed trajectories and actual versus commanded heading.
-            </figcaption>
-          </figure>
-        </article>
-
-        <article class="result-subsection">
+        <article class="result-subsection" id="real-world-results">
           <h3>Real-World Experiments</h3>
           <p>
             We deploy TAPNAV on a Unitree G1 with tactile end-effectors in an office hallway and a
             kitchen. The robot makes successive turns, navigates around the counter, and actively
             probes surfaces with different contact geometry while moving toward the goal.
           </p>
+          <div class="real-world-video-grid">
+            <section class="real-world-trial-row" aria-labelledby="real-world-trial-1">
+              <h4 id="real-world-trial-1">Trial 01</h4>
+              <figure class="experiment-video-card is-tapnav" id="real-world-trial-01-tapnav">
+                <!-- Replace this placeholder with a video element when real-world-trial-01-tapnav.mp4 is ready. -->
+                <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 01, TAPNAV: video coming soon">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
+                  <span>Video coming soon</span>
+                </div>
+                <figcaption>TAPNAV</figcaption>
+              </figure>
+              <figure class="experiment-video-card" id="real-world-trial-01-odometry-only">
+                <!-- Replace this placeholder with a video element when real-world-trial-01-odometry-only.mp4 is ready. -->
+                <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 01, Odometry-only: video coming soon">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
+                  <span>Video coming soon</span>
+                </div>
+                <figcaption>Odometry-only</figcaption>
+              </figure>
+            </section>
+            <section class="real-world-trial-row" aria-labelledby="real-world-trial-2">
+              <h4 id="real-world-trial-2">Trial 02</h4>
+              <figure class="experiment-video-card is-tapnav" id="real-world-trial-02-tapnav">
+                <!-- Replace this placeholder with a video element when real-world-trial-02-tapnav.mp4 is ready. -->
+                <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 02, TAPNAV: video coming soon">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
+                  <span>Video coming soon</span>
+                </div>
+                <figcaption>TAPNAV</figcaption>
+              </figure>
+              <figure class="experiment-video-card" id="real-world-trial-02-odometry-only">
+                <!-- Replace this placeholder with a video element when real-world-trial-02-odometry-only.mp4 is ready. -->
+                <div class="experiment-video-placeholder" role="img" aria-label="Real-world trial 02, Odometry-only: video coming soon">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
+                  <span>Video coming soon</span>
+                </div>
+                <figcaption>Odometry-only</figcaption>
+              </figure>
+            </section>
+          </div>
           <figure class="method-figure result-figure">
             <img
               src="assets/figures/real-world-results.webp"
@@ -554,7 +433,66 @@
               the robot's egocentric view.
             </figcaption>
           </figure>
+          <section class="video-gallery-section" aria-labelledby="drift-recovery-title">
+            <div class="demo-heading">
+              <h3 id="drift-recovery-title">Drift Recovery</h3>
+            </div>
+            <div class="recovery-video-slot">
+                <figure class="experiment-video-card" id="drift-recovery">
+                  <!-- Replace this placeholder with a video element when drift-recovery.mp4 is ready. -->
+                  <div class="experiment-video-placeholder" role="img" aria-label="Drift Recovery: video coming soon">
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="3" /><path d="m13 12 8 4-8 4Z" /></svg>
+                    <span>Video coming soon</span>
+                  </div>
+                  <figcaption>Drift Recovery</figcaption>
+                </figure>
+            </div>
+          </section>
         </article>
+
+        <div class="evaluation-detail-grid">
+          <article class="result-subsection evaluation-detail" id="controller-accuracy">
+            <h3>Low-Level Controller Accuracy</h3>
+            <figure class="method-figure result-figure result-figure-narrow">
+              <a class="figure-detail-link" href="assets/figures/controller-comparison.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
+<img
+                src="assets/figures/controller-comparison.webp"
+                alt="Open-loop trajectory and heading comparison between velocity and footstep tracking policies"
+                loading="lazy"
+              />
+            </a>
+              <figcaption>
+                Simulated open-loop goal tracking with velocity- and footstep-tracking policies over
+                30 trials per policy: executed trajectories and actual versus commanded heading.
+              </figcaption>
+            </figure>
+            <p>
+              We compare TAPNAV's footstep controller with a velocity-tracking controller on a
+              sequence of global planar torso targets. Heading errors accumulate under velocity
+              tracking, while the footstep controller follows the target sequence with minimal drift.
+            </p>
+          </article>
+          <article class="result-subsection evaluation-detail" id="yaw-noise-sensitivity">
+            <h3>Yaw-Noise Sensitivity</h3>
+            <figure class="method-figure result-figure result-figure-narrow">
+              <a class="figure-detail-link" href="assets/figures/yaw-noise.webp" target="_blank" rel="noopener" aria-label="Open figure at full size">
+<img
+                src="assets/figures/yaw-noise.webp"
+                alt="Position error, yaw error, and success rate under increasing yaw noise"
+                loading="lazy"
+              />
+            </a>
+              <figcaption>
+                Yaw-noise sensitivity: position error, yaw error, and success rate. Bands and bars
+                show mean +/- standard error and 95% confidence intervals.
+              </figcaption>
+            </figure>
+            <p>
+              Under increasing IMU heading noise, TAPNAV retains the lowest mean position and yaw
+              errors and the highest success rate among the evaluated methods.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section class="content-section narrow-shell conclusion" id="conclusion">
