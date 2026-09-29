@@ -110,5 +110,25 @@ The supplied TAPNAV clips and all original Downloads files are unchanged.
 
 Visible baseline speed labels are rounded to 2.74x and 9.52x. Matching display
 durations does not indicate equal real-world runtime or synchronize individual
-events. Sixteen simulation slots remain empty; all five real-world slots are filled.
+events. Twelve simulation baseline slots remain empty; all four TAPNAV simulation slots
+and all five real-world slots are filled.
 Asset URLs carry content hashes to prevent stale unredacted browser cache entries.
+
+## Simulation media
+
+The four supplied TAPNAV simulation videos fill the first column of Maps 01–04.
+Their encoded video streams are copied without re-encoding, preserving the supplied
+4x playback timing. MP4 indexes are moved to the start for faster web loading.
+
+| Position | Supplied source | Duration |
+| --- | --- | --- |
+| Map 01, TAPNAV | ref1_bend_seed01_northup_4x.mp4 | 150.96 s |
+| Map 02, TAPNAV | ref2_hall_seed10_northup_4x.mp4 | 129 s |
+| Map 03, TAPNAV | ref3_zsuite_seed05_northup_4x.mp4 | 157.28 s |
+| Map 04, TAPNAV | ref4_room_seed01_0915_move_0p4_northup_4x.mp4 | 187.72 s |
+
+Each clip uses H.264 at 960 x 720 and 25 fps, with no audio. The existing video
+slots use `object-fit: contain` to show the full 4:3 frame within the 16:9 grid.
+Posters are extracted from the supplied clips. Controls, inline playback, and
+metadata preloading match the real-world videos. The three baseline columns
+remain placeholders. Original Downloads files are unchanged.
