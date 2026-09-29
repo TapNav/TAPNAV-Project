@@ -91,3 +91,24 @@ Paper metadata, body text, captions, and original media are unchanged. PDF and
 Code remain unavailable until real links are supplied. CSS and JavaScript URLs
 include content versions to refresh cached local previews; update these versions
 in `index.html` when editing those files.
+
+## Real-world media
+
+| Position | Supplied source | Web duration | Processing |
+| --- | --- | --- | --- |
+| Trial 01, TAPNAV | TAPNAV_4th_floor_website_79s.mp4 | 79 s | Copied unchanged |
+| Trial 01, Odometry-only | IMG_9992.MOV | 79 s | Full source at 2.73510548x, full-person mosaic, compressed |
+| Trial 02, TAPNAV | TAPNAV_2nd_floor_website_45s.mp4 | 45 s | Copied unchanged |
+| Trial 02, Odometry-only | IMG_9986.MOV | 45 s | Full source at 9.52025927x, full-person mosaic, compressed |
+| Drift Recovery | TAPNAV_1st_floor_20s_v9_resynced_cropped_labeled_mosaic.mp4 | 20 s | Copied unchanged |
+
+Both baseline derivatives use 1440 x 810 H.264, 25 fps, SDR Rec.709, and no
+sound. Their full timelines are retained, without cropping or segment omissions.
+Moving, manually reviewed full-person rectangles use coarse pixelation, including
+partially visible people at frame edges. Posters come from the redacted outputs.
+The supplied TAPNAV clips and all original Downloads files are unchanged.
+
+Visible baseline speed labels are rounded to 2.74x and 9.52x. Matching display
+durations does not indicate equal real-world runtime or synchronize individual
+events. Sixteen simulation slots remain empty; all five real-world slots are filled.
+Asset URLs carry content hashes to prevent stale unredacted browser cache entries.
