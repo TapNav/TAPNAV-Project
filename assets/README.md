@@ -23,34 +23,22 @@ paths in `root.tex`; the source folder also contains older figure versions.
 
 - `letsgo.mp4`: current end-to-end overview demo.
 
-## Experiment video slots
+## Experiment videos
 
-The Experiments section in `index.html` pairs each video group with its results:
+The Experiments section pairs each video group with its results:
 
-- Simulation Results: four map rows, ordered TAPNAV, Random-touch, Sweep-touch,
-  Odometry-only (16 videos). IDs follow `sim-map-01-tapnav` through
-  `sim-map-04-odometry-only`.
-- Real-World Experiments: two trials, each with TAPNAV (left) and Odometry-only
-  (right), for four videos total. IDs are `real-world-trial-01-tapnav`,
-  `real-world-trial-01-odometry-only`, `real-world-trial-02-tapnav`, and
-  `real-world-trial-02-odometry-only`.
-- Drift Recovery: `drift-recovery` (1 video), within the real-world section.
+- Simulation Results: four map rows, with TAPNAV on the left and Odometry-only
+  on the right (8 videos). IDs follow `sim-map-01-tapnav` and
+  `sim-map-01-odometry-only` through Map 04.
+- Real-World Experiments: two trials, each with TAPNAV on the left and
+  Odometry-only on the right (4 videos).
+- Drift Recovery: one video within the real-world section.
 
-Map and trial numbers remain temporary labels. To fill a slot, replace its
-`.experiment-video-placeholder` div with a video element, retaining the figure
-and caption. Create `assets/videos/` and use the slot ID as the filename:
-
-```html
-<video controls playsinline preload="none" aria-label="Map 01, TAPNAV navigation">
-  <source src="assets/videos/sim-map-01-tapnav.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-```
-
-Slots use a 16:9 aspect ratio. Desktop shows a 4-by-4 simulation grid and a
-2-by-2 real-world comparison grid. Smaller screens keep simulations grouped
-by map in two columns; real-world pairs remain side by side.
-Placeholders do not request missing files or expose inactive play controls.
+Each map and trial retains its two-column comparison on smaller screens.
+Video frames use a 16:9 slot with `object-fit: contain` to preserve the complete
+source image. All experiment video slots are populated. The Random-touch and
+Sweep-touch video placeholders have been removed; quantitative results and
+existing explanatory text are unchanged.
 
 ## Framework and evaluation layout
 
@@ -69,13 +57,12 @@ serif abstract and conclusion, and a large teaser with a dark caption. The tease
 is wider and closer to the resource links. Smaller radii, lighter borders and
 shadows, and plain figure captions keep the research images prominent.
 
-Comparison videos retain their map and trial groups. Neutral placeholders and
-green TAPNAV labels distinguish the methods without repeating decorated cards.
+Comparison videos retain their map and trial groups. Green TAPNAV labels distinguish the methods without repeating decorated cards.
 The original footer attribution is retained. No separate logo or brand navigation
 has been added. The title emphasizes its tactile-perception phrase with a serif
 italic. A single pale-green abstract area adds contrast to the page; the remaining
 body sections keep their plain backgrounds. Figure links reveal a full-size hint
-on hover or keyboard focus, while unavailable video slots remain static.
+on hover or keyboard focus, and videos retain native playback controls.
 
 A simple section index sits below the teaser. The overview video
 has a dark green presentation area, and experiment headings use a compact
@@ -110,43 +97,45 @@ The supplied TAPNAV clips and all original Downloads files are unchanged.
 
 Visible baseline speed labels are rounded to 2.74x and 9.52x. Matching display
 durations does not indicate equal real-world runtime or synchronize individual
-events. Eight simulation baseline slots remain empty; all four TAPNAV and all four
-Odometry-only simulation slots, plus all five real-world slots, are filled.
+events. All eight simulation slots and all five real-world slots are filled.
 Asset URLs carry content hashes to prevent stale unredacted browser cache entries.
 
 ## Simulation media
 
-The four supplied TAPNAV simulation videos fill the first column of Maps 01–04.
-Their encoded video streams are copied without re-encoding, preserving the supplied
-4x playback timing. MP4 indexes are moved to the start for faster web loading.
+The TAPNAV column combines each matching simulation (left) and global planner
+(right) into a single 1920 x 720 video. Both complete input frames are preserved
+without cropping or additional acceleration. The supplied 4x timing, 25 fps,
+full duration, and frame count are retained. Outputs use H.264, yuv420p, CRF 20,
+and fast-start MP4 indexing. Posters are extracted from the combined videos.
 
-| Position | Supplied source | Duration |
-| --- | --- | --- |
-| Map 01, TAPNAV | ref1_bend_seed01_northup_4x.mp4 | 150.96 s |
-| Map 02, TAPNAV | ref2_hall_seed10_northup_4x.mp4 | 129 s |
-| Map 03, TAPNAV | ref3_zsuite_seed05_northup_4x.mp4 | 157.28 s |
-| Map 04, TAPNAV | ref4_room_seed01_0915_move_0p4_northup_4x.mp4 | 187.72 s |
+| Map | Simulation source | Global planner source | Duration |
+| --- | --- | --- | --- |
+| 01 | ref1_bend_seed01_northup_4x.mp4 | ref1_bend_seed01_global_planner_northup_4x.mp4 | 150.96 s |
+| 02 | ref2_hall_seed10_northup_4x.mp4 | ref2_hall_seed10_global_planner_northup_4x.mp4 | 129 s |
+| 03 | ref3_zsuite_seed05_northup_4x.mp4 | ref3_zsuite_seed05_global_planner_northup_4x.mp4 | 157.28 s |
+| 04 | ref4_room_seed01_0915_move_0p4_northup_4x.mp4 | ref4_room_seed01_0915_move_0p4_global_planner_northup_4x.mp4 | 187.72 s |
 
-Each clip uses H.264 at 960 x 720 and 25 fps, with no audio. The existing video
-slots use `object-fit: contain` to show the full 4:3 frame within the 16:9 grid.
-Posters are extracted from the supplied clips. Controls, inline playback, and
-metadata preloading match the real-world videos. The Random-touch and Sweep-touch columns
-remain placeholders. Original Downloads files are unchanged.
+Source Downloads files are unchanged.
 
 ## Odometry-only simulation failure cases
 
-The supplied ref1–ref4 odometry failure cases fill the Odometry-only column
-for Maps 01–04, respectively. Their supplied 4x timing and encoded video streams
-are preserved; only MP4 indexing is rearranged for fast web loading.
+Each Odometry-only video combines the matching simulation on the left and global
+planner on the right. Both complete 960 x 720 inputs are preserved side by side,
+without cropping, padding, or additional acceleration. The combined 1920 x 720
+H.264 files use 25 fps, yuv420p, CRF 20, and fast-start MP4 indexing.
 
-| Position | Supplied source |
-| --- | --- |
-| Map 01, Odometry-only | ref1_bend_seed06_odom_global_northup_4x.mp4 |
-| Map 02, Odometry-only | ref2_hall_seed11_odom_global_northup_4x.mp4 |
-| Map 03, Odometry-only | ref3_zsuite_seed14_odom_global_northup_4x.mp4 |
-| Map 04, Odometry-only | ref4_room_seed04_odom_global_northup_4x.mp4 |
+Every input pair has identical duration and frame count. Frames are aligned from
+the start, preserving the supplied 4x playback timing and full source timelines.
+The web player contains the wide frame without cropping and supports fullscreen.
 
-Posters are extracted from the supplied clips. Source Downloads files are unchanged.
+| Map | Simulation source | Global planner source | Duration |
+| --- | --- | --- | --- |
+| 01 | ref1_bend_seed06_odom_global_northup_4x.mp4 | ref1_bend_seed06_odom_global_global_planner_northup_4x.mp4 | 149.08 s |
+| 02 | ref2_hall_seed11_odom_global_northup_4x.mp4 | ref2_hall_seed11_odom_global_global_planner_northup_4x.mp4 | 259.88 s |
+| 03 | ref3_zsuite_seed14_odom_global_northup_4x.mp4 | ref3_zsuite_seed14_odom_global_global_planner_northup_4x.mp4 | 395.44 s |
+| 04 | ref4_room_seed04_odom_global_northup_4x.mp4 | ref4_room_seed04_odom_global_global_planner_northup_4x.mp4 | 328.92 s |
+
+Posters come from the combined outputs. Source Downloads files are unchanged.
 
 ## Method layout update
 
