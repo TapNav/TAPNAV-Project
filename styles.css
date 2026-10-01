@@ -49,6 +49,7 @@ h1 em { color: var(--green-dark); font-family: Georgia, "Times New Roman", serif
 .pill { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 42px; min-width: 96px; padding: 8px 17px; border: 1px solid transparent; border-radius: 24px; color: white; background: var(--green-dark); font-size: 14px; font-weight: 550; text-decoration: none; }
 .pill svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .pill.is-disabled { color: #68716b; background: #f0f2ee; border-color: #dfe4dd; cursor: default; }
+.pill-status { margin-left: 2px; padding-left: 9px; border-left: 1px solid #d2d9d1; color: #68716b; font-size: 10px; font-weight: 450; line-height: 1.2; white-space: nowrap; }
 .pill-primary { transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
 .pill-primary:hover { background: #1b4f35; transform: translateY(-2px); box-shadow: 0 5px 12px rgba(31, 65, 41, 0.14); }
 
