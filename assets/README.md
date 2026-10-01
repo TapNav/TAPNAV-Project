@@ -55,7 +55,7 @@ Placeholders do not request missing files or expose inactive play controls.
 ## Framework and evaluation layout
 
 The full-width system overview precedes a shared row for tactile sensing and
-the low-level controller, before the videos. Detailed planning subsections are
+the low-level controller, after the main overview video at the start of Method. Detailed planning subsections are
 omitted from the page; their original figure files remain in `figures/`.
 Controller accuracy and yaw-noise sensitivity share a row after the navigation
 results. These paired sections stack on smaller screens. Framework and compact
@@ -110,8 +110,8 @@ The supplied TAPNAV clips and all original Downloads files are unchanged.
 
 Visible baseline speed labels are rounded to 2.74x and 9.52x. Matching display
 durations does not indicate equal real-world runtime or synchronize individual
-events. Twelve simulation baseline slots remain empty; all four TAPNAV simulation slots
-and all five real-world slots are filled.
+events. Eight simulation baseline slots remain empty; all four TAPNAV and all four
+Odometry-only simulation slots, plus all five real-world slots, are filled.
 Asset URLs carry content hashes to prevent stale unredacted browser cache entries.
 
 ## Simulation media
@@ -130,5 +130,27 @@ Their encoded video streams are copied without re-encoding, preserving the suppl
 Each clip uses H.264 at 960 x 720 and 25 fps, with no audio. The existing video
 slots use `object-fit: contain` to show the full 4:3 frame within the 16:9 grid.
 Posters are extracted from the supplied clips. Controls, inline playback, and
-metadata preloading match the real-world videos. The three baseline columns
+metadata preloading match the real-world videos. The Random-touch and Sweep-touch columns
 remain placeholders. Original Downloads files are unchanged.
+
+## Odometry-only simulation failure cases
+
+The supplied ref1–ref4 odometry failure cases fill the Odometry-only column
+for Maps 01–04, respectively. Their supplied 4x timing and encoded video streams
+are preserved; only MP4 indexing is rearranged for fast web loading.
+
+| Position | Supplied source |
+| --- | --- |
+| Map 01, Odometry-only | ref1_bend_seed06_odom_global_northup_4x.mp4 |
+| Map 02, Odometry-only | ref2_hall_seed11_odom_global_northup_4x.mp4 |
+| Map 03, Odometry-only | ref3_zsuite_seed14_odom_global_northup_4x.mp4 |
+| Map 04, Odometry-only | ref4_room_seed04_odom_global_northup_4x.mp4 |
+
+Posters are extracted from the supplied clips. Source Downloads files are unchanged.
+
+## Method layout update
+
+The 179.8-second main video now appears directly after the Method heading, before
+System Overview. Tactile sensing and controller titles remain top-aligned; their
+complete figure-and-text blocks are vertically centered below the title row.
+The two component sections continue to stack naturally on narrow screens.

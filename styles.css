@@ -82,18 +82,22 @@ h1 em { color: var(--green-dark); font-family: Georgia, "Times New Roman", serif
 .system-overview .method-figure figcaption { max-width: 960px; margin-inline: auto; }
 .framework-detail-grid, .evaluation-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px; margin-top: 42px; align-items: start; }
 .framework-detail, .evaluation-detail { min-width: 0; margin-top: 0; }
+/* Keep titles aligned while centering each complete content block below them. */
+.framework-detail-grid { align-items: stretch; }
+.framework-detail { display: flex; flex-direction: column; }
+.framework-detail-content { width: 100%; margin-block: auto; }
 .framework-detail > h3, .evaluation-detail > h3 { min-height: 2.6em; margin-bottom: 16px; font-size: 22px; text-align: center; }
 .framework-detail .method-figure, .evaluation-detail .method-figure { margin: 0; }
-.framework-detail > p, .evaluation-detail > p { margin-top: 17px; font-size: 15px; line-height: 1.7; }
+.framework-detail-content > p, .evaluation-detail > p { max-width: var(--text-width); margin: 17px auto 0; font-size: 15px; line-height: 1.7; }
 
 /* Keep the available overview video distinct from the comparison placeholders. */
 .demo-heading { max-width: var(--text-width); margin: 0 auto 26px; text-align: center; }
 .demo-heading p, .section-intro { margin-top: 15px; }
 .demo-video { width: min(1020px, 100%); aspect-ratio: 16 / 9; margin-inline: auto; border-radius: 6px; background: #111a15; object-fit: contain; }
 .demo-block h3 { margin-top: 13px; color: var(--muted); font-size: 14px; font-weight: 450; text-align: center; letter-spacing: 0; }
-#demos { padding: 38px 40px 26px; border-radius: 8px; background: #23382e; }
+#demos { margin-top: 30px; padding: 38px 40px 26px; border-radius: 8px; background: #23382e; }
 #demos .demo-heading { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: 42px; align-items: center; max-width: none; margin-bottom: 28px; text-align: left; }
-#demos h2 { max-width: 410px; color: #f3f5ec; font-size: 32px; text-align: left; }
+#demos .demo-heading h3 { max-width: 410px; color: #f3f5ec; font-size: 32px; text-align: left; }
 #demos .demo-heading p { margin: 0; color: #cbd8cc; font-size: 15px; }
 #demos .demo-video { width: 100%; border: 1px solid #516556; border-radius: 3px; }
 #demos .demo-block h3 { color: #c6d3c7; font-size: 13px; }
@@ -169,7 +173,7 @@ pre code { font: inherit; }
   .recovery-block { margin-top: 34px; }
   #demos { padding: 26px 22px 20px; }
   #demos .demo-heading, .section-heading { grid-template-columns: 1fr; gap: 15px; }
-  #demos h2 { max-width: none; font-size: 29px; }
+  #demos .demo-heading h3 { max-width: none; font-size: 29px; }
 }
 
 @media (max-width: 440px) {
@@ -185,10 +189,10 @@ pre code { font: inherit; }
   .page-index { gap: 10px 21px; }
   .page-index a { font-size: 12px; }
   #demos { padding: 23px 16px 18px; border-radius: 5px; }
-  #demos h2 { font-size: 27px; }
+  #demos .demo-heading h3 { font-size: 27px; }
   #demos .demo-heading p { font-size: 14px; }
   .method, .results { padding-top: 28px; }
-  .framework-detail > p, .evaluation-detail > p { font-size: 15px; }
+  .framework-detail-content > p, .evaluation-detail > p { font-size: 15px; }
   .experiment-video-placeholder { font-size: 11px; }
   .experiment-video-card figcaption { font-size: 12px; }
   .method-figure figcaption { font-size: 12px; }
