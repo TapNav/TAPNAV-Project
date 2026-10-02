@@ -34,9 +34,9 @@ The Experiments section pairs each video group with its results:
   Odometry-only on the right (4 videos).
 - Drift Recovery: one video within the real-world section.
 
-Each map and trial uses two comparison columns, stacking on narrow screens.
-Simulation frames retain the combined 8:3 ratio; real-world frames use 16:9
-with `object-fit: contain` to preserve the complete source image. All experiment video slots are populated. The Random-touch and
+Each map and trial retains its two-column comparison on smaller screens.
+Video frames use a 16:9 slot with `object-fit: contain` to preserve the complete
+source image. All experiment video slots are populated. The Random-touch and
 Sweep-touch video placeholders have been removed; quantitative results and
 existing explanatory text are unchanged.
 
@@ -62,7 +62,7 @@ The original footer attribution is retained. No separate logo or brand navigatio
 has been added. The title emphasizes its tactile-perception phrase with a serif
 italic. A single pale-green abstract area adds contrast to the page; the remaining
 body sections keep their plain backgrounds. Figure links reveal a full-size hint
-on hover or keyboard focus, and expanded videos expose native playback controls.
+on hover or keyboard focus, and videos retain native playback controls.
 
 A simple section index sits below the teaser. The overview video
 has a dark green presentation area, and experiment headings use a compact
@@ -143,49 +143,3 @@ The 179.8-second main video now appears directly after the Method heading, befor
 System Overview. Tactile sensing and controller titles remain top-aligned; their
 complete figure-and-text blocks are vertically centered below the title row.
 The two component sections continue to stack naturally on narrow screens.
-
-## Visual and interaction update
-
-The page uses a simple warm-white background with dark text and restrained green
-accents. The TAPNAV wordmark has an automatic 6.2-second sequence: staggered letters
-lift, transition through an outlined state, refill with ink, and settle. A fine
-underline follows the motion. A narrow scan beam crosses the wordmark during
-the interval between letter sequences, with all effects confined to the title. It pauses offscreen, in hidden tabs, and when reduced motion is
-requested. The opening has no decorative background, metallic lettering, or
-pointer-driven lighting. Thin corner frames sit outside the teaser and main video;
-scientific images remain unobstructed. Navigation and viewing controls use muted
-blue-silver highlights, while TAPNAV comparison labels retain their green accent. Original research text, figures, captions, and all 14
-source videos are preserved.
-
-Native scrolling is preserved. The floating glass navigation uses a damped spring
-for its active marker, retaining velocity when another destination is selected.
-A velocity-linked stretch and lean are bounded to 1.06x and 3 degrees and reset
-exactly at rest; they use the same animation loop.
-Click destinations remain selected during smooth scrolling; manual scrolling can
-interrupt navigation. Section positions are cached and animation frames run only
-when needed. A pointer reflection stays inside the navigation glass. Confirmed
-chapter arrivals briefly emphasize the destination heading; interrupted scrolling
-does not trigger this cue. Controls have short press-and-release feedback.
-Headings, copy, and figures enter with a short stagger, then remain still. Paragraph width and
-line spacing are tuned for long-form reading. Experiment videos load metadata
-near the viewport instead of all at page entry. Simulation and real-world clips,
-including Drift Recovery, automatically play muted and loop while visible.
-Inline experiment previews have no native controls or progress bar. Clicking
-the image or its expand button opens a paused player with native play/pause and
-seeking controls; closing returns to the same position and resumes the visible
-preview. Other previews pause while the dialog is open, offscreen, or in hidden
-tabs. Reduced-motion preferences disable automatic playback. The main Method
-film remains manually started.
-
-The header Video link opens the main film directly. Figures and videos expand
-from their position on the page into a keyboard-accessible dialog, then return
-smoothly. Travel distance determines the 280–460 ms transition duration; the
-media uses uniform scaling to avoid distortion. Videos reuse the original player
-and retain their playback position.
-Closing restores keyboard focus and the reader's position on the page. A stable
-scrollbar gutter prevents sideways layout shifts while the dialog is open.
-
-Simulation players preserve the combined 8:3 frame ratio. Paired videos stack
-vertically on narrow screens. No external animation library or font service is
-required. Reduced-motion settings disable spatial transitions and the wordmark
-animation.
