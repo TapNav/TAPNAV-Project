@@ -10,7 +10,7 @@
       name="description"
       content="TAPNAV is a tactile active-perception framework for vision-denied humanoid navigation."
     />
-    <meta name="theme-color" content="#fbfcfa" />
+    <meta name="theme-color" content="#faf9f6" />
     <meta property="og:title" content="TAPNAV | Humanoid Tactile Active Perception" />
     <meta
       property="og:description"
@@ -21,22 +21,35 @@
 
     <title>TAPNAV | Humanoid Navigation through Tactile Active Perception</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=265c6890" />
-    <script src="script.js?v=11d1d445" defer></script>
+    <link rel="stylesheet" href="styles.css?v=f2c486b8" />
+    <script src="script.js?v=ccc60d66" defer></script>
   </head>
 
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
 
+    <div class="reading-progress" aria-hidden="true"></div>
+    <nav class="page-index" aria-label="Page sections">
+      <a href="#abstract">Abstract</a>
+      <a href="#method">Method</a>
+      <a href="#simulation-results">Simulation</a>
+      <a href="#real-world-results">Real world</a>
+      <a href="#bibtex">Citation</a>
+    </nav>
+
     <main id="main-content">
+      <div class="opening-scene">
       <!-- Update author and publication metadata only when confirmed. -->
       <header class="paper-header page-shell">
-        <h1>
-          <strong>TAPNAV:</strong> Humanoid Navigation<br class="title-break" />
-          through <em>Tactile Active Perception</em>
+
+        <h1 aria-label="TAPNAV: Humanoid Navigation through Tactile Active Perception">
+          <span class="title-line"><span><strong class="tapnav-wordmark"><span class="wordmark-letter" style="--letter:0">T</span><span class="wordmark-letter" style="--letter:1">A</span><span class="wordmark-letter" style="--letter:2">P</span><span class="wordmark-letter" style="--letter:3">N</span><span class="wordmark-letter" style="--letter:4">A</span><span class="wordmark-letter" style="--letter:5">V</span><span>:</span><span class="wordmark-scan" aria-hidden="true"></span></strong> Humanoid Navigation</span></span>
+          <span class="title-line"><span>through <em>Tactile Active Perception</em></span></span>
         </h1>
 
+        <div class="paper-meta">
+        <div class="author-block">
         <div class="authors" aria-label="Paper authors">
           <!-- Replace this line with linked author names after the review period. -->
           <span>Anonymous Authors</span>
@@ -44,6 +57,7 @@
         <p class="affiliations">Anonymous Institutions</p>
         <p class="venue">Under Review</p>
 
+        </div>
         <nav class="paper-links" aria-label="Paper resources">
           <!-- Point this link to the final compiled manuscript when it is ready. -->
           <span class="pill is-disabled" aria-disabled="true" title="Paper PDF coming soon">
@@ -60,15 +74,17 @@
             <span class="pill-status">Coming soon</span>
           </span>
         </nav>
+        </div>
+
       </header>
 
-      <section class="page-shell hero-section" aria-label="TAPNAV overview media">
+      <section class="page-shell hero-section reveal" aria-label="TAPNAV overview media">
         <figure class="hero-media">
-          <img
+          <div class="hero-frame"><img
             src="assets/figures/tapnav-teaser.webp"
               width="1800" height="622"
             alt="TAPNAV planned path, planned tactile action, and Unitree G1 deployment in a kitchen environment"
-          />
+          /></div>
           <figcaption>
             TAPNAV enables vision-denied humanoid navigation through tactile active perception. The
             humanoid actively makes contact with the surrounding environment at informative
@@ -78,14 +94,11 @@
         </figure>
       </section>
 
-      <nav class="page-index page-shell" aria-label="Page sections">
-        <a href="#abstract">Abstract</a>
-        <a href="#method">Method</a>
-        <a href="#demos">Video</a>
-        <a href="#experiments">Experiments</a>
-      </nav>
 
-      <section class="content-section page-shell text-section" id="abstract">
+
+      </div>
+
+      <section class="content-section page-shell text-section reveal" id="abstract">
         <h2>Abstract</h2>
         <p class="abstract">
           Navigation in vision-denied environments is challenging for humanoid robots because
@@ -107,7 +120,7 @@
       </section>
 
       <section class="content-section page-shell method" id="method">
-        <h2>Method</h2>
+        <h2 class="reveal">Method</h2>
         <section class="method-demo demos" id="demos">
           <div class="demo-heading">
             <h3>Vision-Denied Navigation</h3>
@@ -118,10 +131,9 @@
           </div>
 
           <article class="demo-block">
-            <video
+            <div class="video-stage"><video
               class="demo-video"
               aria-label="TAPNAV end-to-end navigation demo"
-              autoplay
               muted
               loop
               playsinline
@@ -130,11 +142,11 @@
             >
               <source src="letsgo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
+            </video></div>
             <h3>Humanoid Navigation through Tactile Active Perception</h3>
           </article>
         </section>
-        <article class="method-subsection system-overview">
+        <article class="method-subsection system-overview reveal">
           <h3>System Overview</h3>
           <p>
             TAPNAV localizes the robot on a known, static map using odometry, an IMU-based heading
@@ -158,7 +170,7 @@
             </figcaption>
           </figure>
         </article>
-        <div class="framework-detail-grid">
+        <div class="framework-detail-grid reveal">
           <article class="method-subsection framework-detail">
             <h3>Tactile Sensing and Contact Processing</h3>
             <div class="framework-detail-content">
@@ -217,7 +229,7 @@
 
 
       <section class="content-section page-shell results" id="experiments">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <h2>Experiments</h2>
           <p class="section-intro">
             We evaluate TAPNAV in MuJoCo simulation and on a Unitree G1 humanoid to examine
@@ -235,10 +247,10 @@
             the surface normal and can also reduce heading uncertainty.
           </p>
           <div class="simulation-video-grid">
-            <section class="simulation-map-row" aria-labelledby="simulation-map-1">
+            <section class="simulation-map-row reveal" aria-labelledby="simulation-map-1">
               <h4 id="simulation-map-1">Map 01: Curved Corridor</h4>
               <figure class="experiment-video-card is-tapnav" id="sim-map-01-tapnav">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-01-tapnav.webp?v=f79640d8"
                   aria-label="Map 01: Curved Corridor, TAPNAV simulation and global planner">
                   <source src="assets/videos/sim-map-01-tapnav.mp4?v=0665d85e" type="video/mp4" />
@@ -247,7 +259,7 @@
                 <figcaption>TAPNAV</figcaption>
               </figure>
               <figure class="experiment-video-card" id="sim-map-01-odometry-only">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-01-odometry-only.webp?v=410498d6"
                   aria-label="Map 01: Curved Corridor, Odometry-only simulation and global planner failure case">
                   <source src="assets/videos/sim-map-01-odometry-only.mp4?v=49dc5fb5" type="video/mp4" />
@@ -256,10 +268,10 @@
                 <figcaption>Odometry-only <small>(failure case)</small></figcaption>
               </figure>
             </section>
-            <section class="simulation-map-row" aria-labelledby="simulation-map-2">
+            <section class="simulation-map-row reveal" aria-labelledby="simulation-map-2">
               <h4 id="simulation-map-2">Map 02: Partitioned Room</h4>
               <figure class="experiment-video-card is-tapnav" id="sim-map-02-tapnav">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-02-tapnav.webp?v=51ed9555"
                   aria-label="Map 02: Partitioned Room, TAPNAV simulation and global planner">
                   <source src="assets/videos/sim-map-02-tapnav.mp4?v=dc1732a3" type="video/mp4" />
@@ -268,7 +280,7 @@
                 <figcaption>TAPNAV</figcaption>
               </figure>
               <figure class="experiment-video-card" id="sim-map-02-odometry-only">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-02-odometry-only.webp?v=147bb3e6"
                   aria-label="Map 02: Partitioned Room, Odometry-only simulation and global planner failure case">
                   <source src="assets/videos/sim-map-02-odometry-only.mp4?v=928b436e" type="video/mp4" />
@@ -277,10 +289,10 @@
                 <figcaption>Odometry-only <small>(failure case)</small></figcaption>
               </figure>
             </section>
-            <section class="simulation-map-row" aria-labelledby="simulation-map-3">
+            <section class="simulation-map-row reveal" aria-labelledby="simulation-map-3">
               <h4 id="simulation-map-3">Map 03: Zigzag Corridor</h4>
               <figure class="experiment-video-card is-tapnav" id="sim-map-03-tapnav">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-03-tapnav.webp?v=0edfe677"
                   aria-label="Map 03: Zigzag Corridor, TAPNAV simulation and global planner">
                   <source src="assets/videos/sim-map-03-tapnav.mp4?v=162c4aca" type="video/mp4" />
@@ -289,7 +301,7 @@
                 <figcaption>TAPNAV</figcaption>
               </figure>
               <figure class="experiment-video-card" id="sim-map-03-odometry-only">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-03-odometry-only.webp?v=5e600d9c"
                   aria-label="Map 03: Zigzag Corridor, Odometry-only simulation and global planner failure case">
                   <source src="assets/videos/sim-map-03-odometry-only.mp4?v=295297a4" type="video/mp4" />
@@ -298,10 +310,10 @@
                 <figcaption>Odometry-only <small>(failure case)</small></figcaption>
               </figure>
             </section>
-            <section class="simulation-map-row" aria-labelledby="simulation-map-4">
+            <section class="simulation-map-row reveal" aria-labelledby="simulation-map-4">
               <h4 id="simulation-map-4">Map 04: Room with Scattered Obstacles</h4>
               <figure class="experiment-video-card is-tapnav" id="sim-map-04-tapnav">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-04-tapnav.webp?v=3f030715"
                   aria-label="Map 04: Room with Scattered Obstacles, TAPNAV simulation and global planner">
                   <source src="assets/videos/sim-map-04-tapnav.mp4?v=2c48431c" type="video/mp4" />
@@ -310,7 +322,7 @@
                 <figcaption>TAPNAV</figcaption>
               </figure>
               <figure class="experiment-video-card" id="sim-map-04-odometry-only">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/sim-map-04-odometry-only.webp?v=36301873"
                   aria-label="Map 04: Room with Scattered Obstacles, Odometry-only simulation and global planner failure case">
                   <source src="assets/videos/sim-map-04-odometry-only.mp4?v=44c56d48" type="video/mp4" />
@@ -350,10 +362,10 @@
             probes surfaces with different contact geometry while moving toward the goal.
           </p>
           <div class="real-world-video-grid">
-            <section class="real-world-trial-row" aria-labelledby="real-world-trial-1">
+            <section class="real-world-trial-row reveal" aria-labelledby="real-world-trial-1">
               <h4 id="real-world-trial-1">Trial 01</h4>
               <figure class="experiment-video-card is-tapnav" id="real-world-trial-01-tapnav">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/real-world-trial-01-tapnav.webp?v=36b82278"
                   aria-label="Real-world trial 01, TAPNAV">
                   <source src="assets/videos/real-world-trial-01-tapnav.mp4?v=051ead59" type="video/mp4" />
@@ -362,7 +374,7 @@
                 <figcaption>TAPNAV</figcaption>
               </figure>
               <figure class="experiment-video-card" id="real-world-trial-01-odometry-only">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/real-world-trial-01-odometry-only.webp?v=8d341dd5"
                   aria-label="Real-world trial 01, Odometry-only at 2.74 times source speed">
                   <source src="assets/videos/real-world-trial-01-odometry-only.mp4?v=89ebe85d" type="video/mp4" />
@@ -371,10 +383,10 @@
                 <figcaption>Odometry-only <small>(2.74× speed)</small></figcaption>
               </figure>
             </section>
-            <section class="real-world-trial-row" aria-labelledby="real-world-trial-2">
+            <section class="real-world-trial-row reveal" aria-labelledby="real-world-trial-2">
               <h4 id="real-world-trial-2">Trial 02</h4>
               <figure class="experiment-video-card is-tapnav" id="real-world-trial-02-tapnav">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/real-world-trial-02-tapnav.webp?v=ee2e87ca"
                   aria-label="Real-world trial 02, TAPNAV">
                   <source src="assets/videos/real-world-trial-02-tapnav.mp4?v=a9ccb883" type="video/mp4" />
@@ -383,7 +395,7 @@
                 <figcaption>TAPNAV</figcaption>
               </figure>
               <figure class="experiment-video-card" id="real-world-trial-02-odometry-only">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/real-world-trial-02-odometry-only.webp?v=c2070228"
                   aria-label="Real-world trial 02, Odometry-only at 9.52 times source speed">
                   <source src="assets/videos/real-world-trial-02-odometry-only.mp4?v=7926a0da" type="video/mp4" />
@@ -408,13 +420,13 @@
               the robot's egocentric view.
             </figcaption>
           </figure>
-          <section class="video-gallery-section recovery-block" aria-labelledby="drift-recovery-title">
+          <section class="video-gallery-section recovery-block reveal" aria-labelledby="drift-recovery-title">
             <div class="demo-heading">
               <h3 id="drift-recovery-title">Drift Recovery</h3>
             </div>
             <div class="recovery-video-slot">
                 <figure class="experiment-video-card" id="drift-recovery">
-                <video controls muted playsinline preload="metadata"
+                <video muted loop playsinline preload="none" data-lazy-video data-scroll-autoplay
                   poster="assets/videos/drift-recovery.webp?v=31089201"
                   aria-label="Drift Recovery">
                   <source src="assets/videos/drift-recovery.mp4?v=18411ada" type="video/mp4" />
@@ -426,7 +438,7 @@
           </section>
         </article>
 
-        <div class="evaluation-detail-grid">
+        <div class="evaluation-detail-grid reveal">
           <article class="result-subsection evaluation-detail" id="controller-accuracy">
             <h3>Low-Level Controller Accuracy</h3>
             <figure class="method-figure result-figure result-figure-narrow">
@@ -473,7 +485,7 @@
         </div>
       </section>
 
-      <section class="content-section page-shell text-section conclusion" id="conclusion">
+      <section class="content-section page-shell text-section conclusion reveal" id="conclusion">
         <h2>Conclusion</h2>
         <p>
           TAPNAV integrates tactile active probing, belief-space localization, uncertainty-aware
@@ -485,7 +497,7 @@
         </p>
       </section>
 
-      <section class="content-section page-shell citation-section" id="bibtex">
+      <section class="content-section page-shell citation-section reveal" id="bibtex">
         <div class="bibtex-heading">
           <h2>BibTeX</h2>
           <button class="copy-button" type="button" data-copy-target="bibtex-code" aria-label="Copy BibTeX citation">Copy</button>
@@ -501,6 +513,7 @@
     </main>
 
     <footer class="site-footer">
+      <a class="back-to-top" href="#main-content">Back to top <span aria-hidden="true">↑</span></a>
       <p>TAPNAV · <span data-year></span></p>
       <p>Structure inspired by the HOVER academic project page.</p>
     </footer>
