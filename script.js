@@ -29,10 +29,6 @@ if (copyButton) {
   });
 }
 
-document.querySelectorAll("[data-year]").forEach((element) => {
-  element.textContent = new Date().getFullYear();
-});
-
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const revealElements = [...document.querySelectorAll(".reveal")];
 let revealObserver;
@@ -63,6 +59,45 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
 }
 honorMotionPreference();
 reducedMotion.addEventListener("change", honorMotionPreference);
+
+// These smaller landmarks arrive once, then remain still for uninterrupted reading.
+const detailMotionTargets = new Map();
+document.querySelectorAll(".method > h2, .result-subsection > h3, .method-figure, .site-footer")
+  .forEach((element) => {
+    element.classList.add("detail-reveal");
+    detailMotionTargets.set(element, "is-detail-visible");
+  });
+document.querySelectorAll(".content-section").forEach((element) => {
+  element.classList.add("section-framed");
+  detailMotionTargets.set(element, "is-section-visible");
+});
+let detailMotionObserver;
+
+function showAllDetailMotion() {
+  document.documentElement.classList.remove("detail-motion-ready");
+  detailMotionObserver?.disconnect();
+  detailMotionTargets.forEach((visibleClass, element) => element.classList.add(visibleClass));
+}
+
+if (!reducedMotion.matches && "IntersectionObserver" in window) {
+  detailMotionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const visibleClass = detailMotionTargets.get(entry.target);
+      const tallerThanViewport = entry.boundingClientRect.height > (entry.rootBounds?.height || window.innerHeight);
+      if (visibleClass === "is-detail-visible" && entry.intersectionRatio < 0.08 && !tallerThanViewport) return;
+      entry.target.classList.add(visibleClass);
+      detailMotionObserver.unobserve(entry.target);
+    });
+  }, { threshold: [0, 0.08], rootMargin: "0px 0px -32px 0px" });
+  detailMotionTargets.forEach((visibleClass, element) => detailMotionObserver.observe(element));
+  document.documentElement.classList.add("detail-motion-ready");
+} else {
+  showAllDetailMotion();
+}
+reducedMotion.addEventListener("change", () => {
+  if (reducedMotion.matches) showAllDetailMotion();
+});
 
 // The wordmark moves only while it can be seen; CSS owns the animation itself.
 const wordmark = document.querySelector(".tapnav-wordmark");
@@ -171,6 +206,7 @@ function reconcileExperimentPlayback() {
 }
 
 function beginExperimentDialog(media) {
+  resetSurfacePointer();
   experimentDialogOpen = true;
   expandedExperiment = experimentPlayback.has(media) ? media : null;
   experimentPlayback.forEach((state) => {
@@ -257,6 +293,61 @@ if (pageIndex) {
     if (document.visibilityState !== "visible") resetGlassPointer();
   });
 }
+
+// Only the media frame catches light; pointer movement never transforms its contents.
+const reflectiveSurfaces = [...document.querySelectorAll(".hero-frame, .video-stage, .figure-detail-link")];
+let surfacePointer = null;
+let surfaceFrame = 0;
+
+function resetSurfacePointer() {
+  window.cancelAnimationFrame(surfaceFrame);
+  surfaceFrame = 0;
+  if (!surfacePointer) return;
+  surfacePointer.element.classList.remove("has-surface-pointer");
+  surfacePointer = null;
+}
+
+function updateSurfacePointer(element, event) {
+  if (!finePointer.matches || reducedMotion.matches || event.pointerType === "touch" ||
+      document.visibilityState !== "visible" || experimentDialogOpen) return;
+  if (surfacePointer?.element !== element) {
+    resetSurfacePointer();
+    const bounds = element.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+    surfacePointer = { element, bounds, x: event.clientX, y: event.clientY };
+  }
+  surfacePointer.x = event.clientX;
+  surfacePointer.y = event.clientY;
+  if (surfaceFrame) return;
+  surfaceFrame = window.requestAnimationFrame(() => {
+    surfaceFrame = 0;
+    if (!surfacePointer) return;
+    const { element: target, bounds, x, y } = surfacePointer;
+    target.style.setProperty("--edge-x", `${Math.max(0, Math.min(bounds.width, x - bounds.left)).toFixed(2)}px`);
+    target.style.setProperty("--edge-y", `${Math.max(0, Math.min(bounds.height, y - bounds.top)).toFixed(2)}px`);
+    target.classList.add("has-surface-pointer");
+  });
+}
+
+reflectiveSurfaces.forEach((element) => {
+  const track = (event) => updateSurfacePointer(element, event);
+  const leave = () => {
+    if (surfacePointer?.element === element) resetSurfacePointer();
+  };
+  element.addEventListener("pointerenter", track, { passive: true });
+  element.addEventListener("pointermove", track, { passive: true });
+  element.addEventListener("pointerleave", leave, { passive: true });
+  element.addEventListener("pointercancel", leave, { passive: true });
+});
+// Discard stale geometry; the next pointer movement measures the current frame once.
+window.addEventListener("scroll", resetSurfacePointer, { passive: true });
+window.addEventListener("resize", resetSurfacePointer, { passive: true });
+window.addEventListener("blur", resetSurfacePointer);
+finePointer.addEventListener("change", resetSurfacePointer);
+reducedMotion.addEventListener("change", resetSurfacePointer);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") resetSurfacePointer();
+});
 
 const sectionLinks = [...document.querySelectorAll('.page-index a[href^="#"]')]
   .map((link) => ({ link, section: document.getElementById(link.hash.slice(1)) }))

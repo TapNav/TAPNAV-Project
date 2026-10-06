@@ -151,8 +151,8 @@ accents. The TAPNAV wordmark has an automatic 6.2-second sequence: staggered let
 lift, transition through an outlined state, refill with ink, and settle. A fine
 underline follows the motion. A narrow scan beam crosses the wordmark during
 the interval between letter sequences, with all effects confined to the title. It pauses offscreen, in hidden tabs, and when reduced motion is
-requested. The opening has no decorative background, metallic lettering, or
-pointer-driven lighting. Thin corner frames sit outside the teaser and main video;
+requested. The opening retains its simple background. Pointer highlights follow only the
+outer borders of media frames, leaving image content unobstructed. Thin corner frames sit outside the teaser and main video;
 scientific images remain unobstructed. Navigation and viewing controls use muted
 blue-silver highlights, while TAPNAV comparison labels retain their green accent. Original research text, figures, captions, and all 14
 source videos are preserved.
@@ -189,3 +189,28 @@ Simulation players preserve the combined 8:3 frame ratio. Paired videos stack
 vertically on narrow screens. No external animation library or font service is
 required. Reduced-motion settings disable spatial transitions and the wordmark
 animation.
+
+## Reading and typography refinement
+
+The desktop reading scale uses 18 px prose, 16 px figure captions, and an
+18 px main-video subtitle. Video labels use 14 px text with explicit 13 px
+metadata; navigation, controls, author details, and the footer are enlarged
+to match. On narrow screens, prose remains 17 px and figure captions 15 px.
+The smallest navigation labels are 12 px at the narrowest breakpoint; the
+previous 8–10 px metadata and controls have been removed.
+
+Desktop figure links lift slightly on hover, with an eased border and shadow.
+A fine gradient rule highlights the associated caption on hover or keyboard
+focus. These additions respect reduced-motion settings and do not animate
+reading text. Research copy, figures, media, and playback behavior are unchanged.
+
+## Page-wide motion refinement
+
+Section rules draw in as they enter the viewport. Method and result headings,
+figures, and the footer arrive once with a short eased transition; paired
+experiment cards use a staggered entrance. Reading text settles and stays still.
+The wordmark shifts through cool-blue outlines and ink, and the navigation and
+media viewer use a subtle blue-silver glass treatment. Pointer highlights are
+event-driven and reset during scrolling, dialog use, or loss of focus.
+Reduced-motion settings show content immediately and disable these transitions.
+The footer no longer displays a year.
