@@ -175,7 +175,8 @@ the image or its expand button opens a paused player with native play/pause and
 seeking controls; closing returns to the same position and resumes the visible
 preview. Other previews pause while the dialog is open, offscreen, or in hidden
 tabs. Reduced-motion preferences disable automatic playback. The main Method
-film remains manually started.
+film starts muted when visible, with native playback and sound controls. Manual
+pauses are respected; offscreen playback pauses and resumes on return.
 
 The header Video link opens the main film directly. Figures and videos expand
 from their position on the page into a keyboard-accessible dialog, then return
@@ -214,3 +215,20 @@ media viewer use a subtle blue-silver glass treatment. Pointer highlights are
 event-driven and reset during scrolling, dialog use, or loss of focus.
 Reduced-motion settings show content immediately and disable these transitions.
 The footer no longer displays a year.
+
+## Main film and paragraph width update
+
+The local main film (`letsgo.mp4`) automatically starts muted when at least 20%
+of its frame is visible. Manual pause, seeking, sound controls, and the expanded
+viewer remain available. Reduced-motion preferences disable automatic playback.
+Method and results prose, teaser text, and figure captions fill their available
+column width instead of stopping at an extra character-based width limit.
+Research text and media are unchanged.
+
+## Main film sound control
+
+A compact Sound off / Sound on button sits above the native playback controls,
+at the lower-right of the main film and its expanded viewer. The first automatic
+playback is muted. An explicit click enables audio at the existing time; toggling
+does not seek or reload the video. Both buttons follow native volume changes.
+Scrolling and opening or closing the viewer preserve the current sound choice.

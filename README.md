@@ -18,7 +18,11 @@ to install.
 Experiment previews play muted and loop while visible, without progress bars.
 Click a preview or its Expand button to open a paused player with playback
 and seeking controls. Closing resumes the inline preview at the same position.
-The main Method video remains manually started.
+The main Method video starts muted when it enters view, with native playback,
+seeking, and sound controls. It pauses offscreen and respects manual pauses and
+reduced-motion settings. The lower-right Sound off / Sound on button toggles
+audio at the current playback position, including in the expanded viewer.
+The choice stays synchronized with the native volume controls for this visit.
 
 ## Content checklist
 

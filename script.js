@@ -205,8 +205,102 @@ function reconcileExperimentPlayback() {
   });
 }
 
+// Start the main film when it is visible, while preserving a reader's manual pause.
+const overviewVideo = document.querySelector("video[data-main-autoplay]");
+const overviewPlayback = { visible: false, started: false, resume: false, blocked: false, pending: false, request: 0 };
+let overviewExpanded = false;
+const overviewSoundButtons = [];
+
+function syncOverviewSound() {
+  if (!overviewVideo) return;
+  const enabled = !overviewVideo.muted && overviewVideo.volume > 0;
+  overviewSoundButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(enabled));
+    button.setAttribute("aria-label", enabled ? "Mute main video" : "Enable main video sound");
+    button.querySelector("span").textContent = enabled ? "Sound on" : "Sound off";
+  });
+}
+
+function createOverviewSoundButton() {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "video-sound-toggle";
+  button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path class="sound-muted-mark" d="m16 9 6 6m0-6-6 6"/><path class="sound-playing-mark" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><span>Sound off</span>';
+  button.addEventListener("click", () => {
+    const enable = overviewVideo.muted || overviewVideo.volume === 0;
+    if (enable && overviewVideo.volume === 0) overviewVideo.volume = 1;
+    overviewVideo.muted = !enable;
+    syncOverviewSound();
+    // This explicit interaction may resume playback, without seeking or reloading.
+    if (enable && overviewVideo.paused) overviewVideo.play().catch(() => {});
+  });
+  overviewSoundButtons.push(button);
+  syncOverviewSound();
+  return button;
+}
+
+if (overviewVideo) {
+  overviewVideo.closest(".video-stage").append(createOverviewSoundButton());
+  overviewVideo.addEventListener("volumechange", syncOverviewSound);
+}
+
+function suspendOverviewPlayback() {
+  if (!overviewVideo) return;
+  if (!overviewVideo.paused || overviewPlayback.pending) overviewPlayback.resume = true;
+  overviewPlayback.request += 1;
+  overviewPlayback.pending = false;
+  overviewVideo.pause();
+}
+
+function overviewShouldPlay() {
+  return overviewPlayback.visible && !experimentDialogOpen && !reducedMotion.matches &&
+    document.visibilityState === "visible";
+}
+
+function reconcileOverviewPlayback() {
+  if (!overviewVideo) return;
+  if (overviewExpanded && document.visibilityState === "visible") return;
+  if (!overviewShouldPlay()) {
+    suspendOverviewPlayback();
+    return;
+  }
+  if (overviewPlayback.blocked || overviewPlayback.pending || !overviewVideo.paused ||
+      (overviewPlayback.started && !overviewPlayback.resume)) return;
+  const request = ++overviewPlayback.request;
+  overviewPlayback.pending = true;
+  overviewPlayback.started = true;
+  overviewPlayback.resume = false;
+  // The initial HTML state is muted; later resumes preserve the reader's choice.
+  overviewVideo.play().then(() => {
+    if (overviewPlayback.request === request) overviewPlayback.pending = false;
+    if (!overviewExpanded && !overviewShouldPlay()) suspendOverviewPlayback();
+    if (document.visibilityState !== "visible") suspendOverviewPlayback();
+  }).catch(() => {
+    if (overviewPlayback.request !== request) return;
+    overviewPlayback.pending = false;
+    overviewPlayback.blocked = true; // Keep manual controls available if autoplay is denied.
+  });
+}
+
+if (overviewVideo && "IntersectionObserver" in window) {
+  // Observe the stable frame so moving the video into a dialog cannot change visibility.
+  const overviewObserver = new IntersectionObserver((entries) => {
+    overviewPlayback.visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.2);
+    reconcileOverviewPlayback();
+  }, { rootMargin: "-70px 0px -20px 0px", threshold: [0, 0.2] });
+  overviewObserver.observe(overviewVideo.closest(".video-stage"));
+  overviewVideo.addEventListener("play", () => {
+    overviewPlayback.started = true;
+    overviewPlayback.blocked = false;
+  });
+  document.addEventListener("visibilitychange", reconcileOverviewPlayback);
+  reducedMotion.addEventListener("change", reconcileOverviewPlayback);
+}
+
 function beginExperimentDialog(media) {
   resetSurfacePointer();
+  suspendOverviewPlayback();
+  overviewExpanded = media === overviewVideo;
   experimentDialogOpen = true;
   expandedExperiment = experimentPlayback.has(media) ? media : null;
   experimentPlayback.forEach((state) => {
@@ -218,6 +312,8 @@ function beginExperimentDialog(media) {
 function endExperimentDialog() {
   experimentDialogOpen = false;
   expandedExperiment = null;
+  overviewExpanded = false;
+  reconcileOverviewPlayback();
   reconcileExperimentPlayback();
 }
 
@@ -630,6 +726,7 @@ if (typeof HTMLDialogElement !== "undefined" && "showModal" in HTMLDialogElement
   closeButton.textContent = "Close ×";
   const mediaBody = document.createElement("div");
   mediaBody.className = "media-dialog-body";
+  const dialogSoundButton = overviewVideo ? createOverviewSoundButton() : null;
   const mediaCaption = document.createElement("p");
   mediaCaption.className = "media-dialog-caption";
   mediaCaption.id = "media-dialog-caption";
@@ -754,6 +851,7 @@ if (typeof HTMLDialogElement !== "undefined" && "showModal" in HTMLDialogElement
     // The fallback still uses this same video and never changes or reloads its source.
     if (typeof mediaBody.moveBefore === "function") mediaBody.moveBefore(media, null);
     else mediaBody.append(media);
+    if (media === overviewVideo && dialogSoundButton) mediaBody.append(dialogSoundButton);
     closeButton.focus({ preventScroll: true });
     const destination = media.getBoundingClientRect();
     animateMedia(session, [
