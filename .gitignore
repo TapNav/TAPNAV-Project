@@ -1,1 +1,4 @@
 .DS_Store
+
+# Distribution archives are shared separately, not published by GitHub Pages.
+*.zip

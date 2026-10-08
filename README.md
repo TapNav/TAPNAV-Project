@@ -40,3 +40,23 @@ The choice stays synchronized with the native volume controls for this visit.
 The static page can be deployed directly from the root of a GitHub repository without a build step. In GitHub, select **Settings → Pages → Deploy from a branch → main / (root)**.
 
 During double-blind review, do not publish from an identifiable personal account or domain unless the venue explicitly permits it.
+
+## GitHub Pages release package
+
+Unzip the project package and use GitHub Desktop or Git to upload the files
+inside `TAPNAV-Project/`. Do not upload the ZIP itself. The release is checked
+against a published-site size below 1,000,000,000 bytes and a per-file size below
+100 MiB. Browser-based file uploads have a lower 25 MiB limit, so use GitHub
+Desktop or Git for the experiment videos. Git LFS is not required.
+
+The ten processed experiment videos use high-quality two-pass H.264 encoding
+at their original dimensions and 25 fps. The eight simulation composites remain
+1920 x 720; the two real-world baseline videos remain 3840 x 2160. Full-person
+mosaics, the final Trial 02 edge correction, side-by-side composition, and speed
+adjustments are preserved. The other four videos are unchanged. Posters remain
+full-resolution lossless WebP. Lossless masters and source recordings are kept
+separately from the website distribution.
+
+Limits checked against the official documentation:
+- [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
+- [GitHub file-size limits](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)

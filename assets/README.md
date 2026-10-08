@@ -1,6 +1,6 @@
 # TapNav asset guide
 
-Keep public page assets compressed and use lowercase filenames without spaces.
+Use lowercase filenames without spaces. The web release retains full frame dimensions and uses high-quality two-pass H.264 after the required composition and privacy processing. Lossless masters are archived separately.
 
 ## Imported from the final LaTeX references
 
@@ -84,12 +84,12 @@ in `index.html` when editing those files.
 | Position | Supplied source | Web duration | Processing |
 | --- | --- | --- | --- |
 | Trial 01, TAPNAV | TAPNAV_4th_floor_website_79s.mp4 | 79 s | Copied unchanged |
-| Trial 01, Odometry-only | IMG_9992.MOV | 79 s | Full source at 2.73510548x, full-person mosaic, compressed |
+| Trial 01, Odometry-only | IMG_9992.MOV | 79 s | Full source at 2.73510548x, full-person mosaic, high-quality two-pass export |
 | Trial 02, TAPNAV | TAPNAV_2nd_floor_website_45s.mp4 | 45 s | Copied unchanged |
-| Trial 02, Odometry-only | IMG_9986.MOV | 45 s | Full source at 9.52025927x, full-person mosaic, compressed |
+| Trial 02, Odometry-only | IMG_9986.MOV | 45 s | Full source at 9.52025927x, full-person mosaic, high-quality two-pass export |
 | Drift Recovery | TAPNAV_1st_floor_20s_v9_resynced_cropped_labeled_mosaic.mp4 | 20 s | Copied unchanged |
 
-Both baseline derivatives use 1440 x 810 H.264, 25 fps, SDR Rec.709, and no
+Both baseline derivatives use 3840 x 2160 two-pass H.264, 25 fps, SDR Rec.709, and no
 sound. Their full timelines are retained, without cropping or segment omissions.
 Moving, manually reviewed full-person rectangles use coarse pixelation, including
 partially visible people at frame edges. Posters come from the redacted outputs.
@@ -105,7 +105,7 @@ Asset URLs carry content hashes to prevent stale unredacted browser cache entrie
 The TAPNAV column combines each matching simulation (left) and global planner
 (right) into a single 1920 x 720 video. Both complete input frames are preserved
 without cropping or additional acceleration. The supplied 4x timing, 25 fps,
-full duration, and frame count are retained. Outputs use H.264, yuv420p, CRF 20,
+full duration, and frame count are retained. Web outputs use two-pass H.264, yuv420p, original dimensions,
 and fast-start MP4 indexing. Posters are extracted from the combined videos.
 
 | Map | Simulation source | Global planner source | Duration |
@@ -122,7 +122,7 @@ Source Downloads files are unchanged.
 Each Odometry-only video combines the matching simulation on the left and global
 planner on the right. Both complete 960 x 720 inputs are preserved side by side,
 without cropping, padding, or additional acceleration. The combined 1920 x 720
-H.264 files use 25 fps, yuv420p, CRF 20, and fast-start MP4 indexing.
+web H.264 files use 25 fps, yuv420p, two-pass bitrate allocation, and fast-start MP4 indexing.
 
 Every input pair has identical duration and frame count. Frames are aligned from
 the start, preserving the supplied 4x playback timing and full source timelines.
@@ -232,3 +232,27 @@ at the lower-right of the main film and its expanded viewer. The first automatic
 playback is muted. An explicit click enables audio at the existing time; toggling
 does not seek or reload the video. Both buttons follow native volume changes.
 Scrolling and opening or closing the viewer preserve the current sound choice.
+
+## Source-quality restoration
+
+All eight simulation composites were rebuilt from the matching source pairs at
+1920 x 720, retaining every source frame and the supplied timing. The four TAPNAV
+simulation halves were recovered from saved pre-combination copies; the matching
+planner originals and both Odometry source halves were available.
+
+The two real-world baselines retain the reviewed full-person mosaic tracks,
+including the additional distant-person track, and the same target durations.
+The final right-edge arm in Trial 02 receives additional coverage from 42.6 s
+to the end; the remaining reviewed tracks are retained.
+They are rebuilt directly from the original 4K MOV files, with no downscaling
+or lossy intermediate. The existing HDR-to-SDR conversion is retained for web
+viewing. Lossless encoding preserves the resulting processed frames; it does not
+reverse compression already present in the supplied recordings.
+
+All 13 experiment posters use lossless WebP at the full video frame dimensions.
+The three supplied real-world TAPNAV/Drift Recovery MP4 files are copied unchanged.
+The pre-existing main film and research figures are unchanged. Original camera
+recordings are archived separately and are not included in the distributable
+website package. The lossless site is archived separately. The GitHub Pages release is encoded
+once from these processed lossless masters, with a total site budget below
+1 GB and each file below 100 MiB. Use the byte-range local server for seeking.
