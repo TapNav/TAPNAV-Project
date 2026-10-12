@@ -405,3 +405,22 @@ h2.is-arriving,h3.is-arriving { animation: heading-arrival .95s var(--ease) both
   .wordmark-scan { display: none; }
   .motion-ready :is(#abstract,.conclusion,.system-overview,.section-heading,.framework-detail-grid,.evaluation-detail-grid).reveal:not(.is-visible) > * { opacity: 1; transform: none; }
 }
+
+/* Vector experiment plots retain readable axes at each viewport width. */
+.simulation-legend { font-family: "Times New Roman", Times, serif; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 24px; margin: 0 0 32px; padding: 0; list-style: none; font-size: 18px; line-height: 1.45; color: var(--ink); }
+.simulation-legend li { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.legend-mark { display: inline-block; width: 30px; height: 5px; flex: 0 0 30px; background: #2563eb; }
+.legend-position-drop { height: 18px; background: #f7a0a6; }
+.legend-heading-drop { height: 18px; background: #fac46c; }
+.legend-ground-truth,.legend-error { background: #171c2b; }
+.legend-contact,.legend-start,.legend-goal { width: 18px; height: 18px; flex-basis: 18px; margin: 0 6px; border-radius: 50%; background: #dc2626; }
+.legend-start { background: #7c3aed; }
+.legend-goal { border-radius: 0; background: #16a34a; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 94%,50% 72%,21% 94%,32% 57%,2% 35%,39% 35%); }
+.simulation-figure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.simulation-figure-grid .figure-detail-link { padding: 18px 10px 12px; }
+.simulation-figure-grid img { display: block; width: 100%; height: auto; }
+.simulation-pdf-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; color: var(--ink); font-size: 18px; text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 900px) { .simulation-legend { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .simulation-legend { grid-template-columns: 1fr; gap: 12px; font-size: 18px; } .simulation-figure-grid { grid-template-columns: 1fr; gap: 24px; } .simulation-figure-grid .figure-detail-link { padding: 12px 5px; } }
+.simulation-figure-grid .figure-detail-link::after { top: 7px; bottom: auto; font-size: 14px; }
+@media (max-width: 640px) { .simulation-figure-grid .figure-detail-link { padding-top: 42px; } }

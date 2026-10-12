@@ -256,3 +256,17 @@ recordings are archived separately and are not included in the distributable
 website package. The lossless site is archived separately. The GitHub Pages release is encoded
 once from these processed lossless masters, with a total site budget below
 1 GB and each file below 100 MiB. Use the byte-range local server for seeking.
+
+## Simulation figure typography update (2026-10-09)
+
+The simulation result figure now uses the original vector plots embedded in
+slide 14 of the supplied `tactile_nav.pptx`. Tick labels are enlarged from 13
+to 26 SVG units; axis labels and shared legends are enlarged and spaced
+separately. All original data paths, tick values, map geometry, and highlights
+are preserved. The website shows two plots per row (one on small screens).
+`figures/simulation-results.pdf` contains the four-column publication figure.
+Videos and all other figures are unchanged by this update.
+
+## Simulation figure font alignment (2026-10-11)
+
+The simulation legend, axis labels, tick values, and panel labels use Times New Roman, matching the original slide 14 legend and the serif labels in the paper figures. The enlarged type sizes, original data paths, and responsive figure layout are preserved. The downloadable vector PDF embeds Times New Roman.

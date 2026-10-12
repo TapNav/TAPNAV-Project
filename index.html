@@ -21,7 +21,7 @@
 
     <title>TAPNAV | Humanoid Navigation through Tactile Active Perception</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=1cdabac2" />
+    <link rel="stylesheet" href="styles.css?v=432b8625" />
     <script src="script.js?v=66f03435" defer></script>
   </head>
 
@@ -333,15 +333,25 @@
               </figure>
             </section>
           </div>
-          <figure class="method-figure result-figure">
-            <a class="figure-detail-link" href="assets/figures/simulation-results.webp" target="_blank" rel="noopener" aria-label="View simulation results figure at full size">
-            <img
-              src="assets/figures/simulation-results.webp"
-              width="1800" height="547"
-              alt="TAPNAV trajectories, tactile contact points, localization uncertainty, and error across four simulation maps"
-              loading="lazy"
-            />
-          </a>
+          <figure class="method-figure result-figure simulation-result-figure" id="simulation-figure">
+            <ul class="simulation-legend" aria-label="Simulation figure legend">
+              <li><span class="legend-mark legend-position-drop" aria-hidden="true"></span><span>Largest position uncertainty drop</span></li>
+              <li><span class="legend-mark legend-heading-drop" aria-hidden="true"></span><span>Largest heading uncertainty drop</span></li>
+              <li><span class="legend-mark legend-uncertainty" aria-hidden="true"></span><span>Position/yaw uncertainty</span></li>
+              <li><span class="legend-mark legend-estimated" aria-hidden="true"></span><span>Position: Estimated</span></li>
+              <li><span class="legend-mark legend-ground-truth" aria-hidden="true"></span><span>Position: Ground truth</span></li>
+              <li><span class="legend-mark legend-error" aria-hidden="true"></span><span>Position/yaw error</span></li>
+              <li><span class="legend-mark legend-contact" aria-hidden="true"></span><span>Contact point</span></li>
+              <li><span class="legend-mark legend-start" aria-hidden="true"></span><span>Start</span></li>
+              <li><span class="legend-mark legend-goal" aria-hidden="true"></span><span>Goal</span></li>
+            </ul>
+            <div class="simulation-figure-grid">
+              <a class="figure-detail-link" href="assets/figures/simulation-map-1.svg?v=7da5b287" target="_blank" rel="noopener" aria-label="View Map 01: Curved Corridor results at full size"><img src="assets/figures/simulation-map-1.svg?v=7da5b287" width="610" height="710" alt="Map 01: Curved Corridor. Estimated and ground-truth trajectories, contact points, position and yaw uncertainty and error." loading="lazy" /></a>
+              <a class="figure-detail-link" href="assets/figures/simulation-map-2.svg?v=7a1d4b48" target="_blank" rel="noopener" aria-label="View Map 02: Partitioned Room results at full size"><img src="assets/figures/simulation-map-2.svg?v=7a1d4b48" width="610" height="710" alt="Map 02: Partitioned Room. Estimated and ground-truth trajectories, contact points, position and yaw uncertainty and error." loading="lazy" /></a>
+              <a class="figure-detail-link" href="assets/figures/simulation-map-3.svg?v=d8baacab" target="_blank" rel="noopener" aria-label="View Map 03: Zigzag Corridor results at full size"><img src="assets/figures/simulation-map-3.svg?v=d8baacab" width="610" height="710" alt="Map 03: Zigzag Corridor. Estimated and ground-truth trajectories, contact points, position and yaw uncertainty and error." loading="lazy" /></a>
+              <a class="figure-detail-link" href="assets/figures/simulation-map-4.svg?v=b55e5e80" target="_blank" rel="noopener" aria-label="View Map 04: Room with Scattered Obstacles results at full size"><img src="assets/figures/simulation-map-4.svg?v=b55e5e80" width="610" height="710" alt="Map 04: Room with Scattered Obstacles. Estimated and ground-truth trajectories, contact points, position and yaw uncertainty and error." loading="lazy" /></a>
+            </div>
+            <a class="simulation-pdf-link" href="assets/figures/simulation-results.pdf?v=84194bac" target="_blank" rel="noopener">Download figure (PDF) <span aria-hidden="true">↗</span></a>
             <figcaption>
               TAPNAV navigation performance in simulation. Each map shows the estimated and
               ground-truth trajectories, tactile contact points, and the corresponding position and
